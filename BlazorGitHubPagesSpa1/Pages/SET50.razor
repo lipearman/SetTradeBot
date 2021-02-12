@@ -1,8 +1,8 @@
-﻿@page "/summary"
+﻿@page "/set50"
 @inject IMatToaster Toaster
 @inject NavigationManager NavManager
 
-<h1>Summary @lastdate</h1>
+<h1>SET50 @lastdate</h1>
 @if (ohlc == null)
 {
     <MatDialog IsOpen="true" CanBeClosed="false">
@@ -127,7 +127,7 @@ else
         ItemSelected = ohlc;
 
         _title = ItemSelected.Symbol;
-        _message= "Added To Favorite";
+        _message = "Added To Favorite";
 
         dialogAnimal = null;
         dialogIsOpen = true;
@@ -152,7 +152,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         HttpClient = new HttpClient();
-        var jsdata = await HttpClient.GetStringAsync($"https://script.google.com/macros/s/AKfycbxe6QG2n8IRTWyv4nFMl3UMeUKp-6_i0wQlDbIVkN2xOC59f5jB-gYz1Q/exec?id=1");
+        var jsdata = await HttpClient.GetStringAsync($"https://script.google.com/macros/s/AKfycbxe6QG2n8IRTWyv4nFMl3UMeUKp-6_i0wQlDbIVkN2xOC59f5jB-gYz1Q/exec?id=2");
         var data = jsdata;//.ToString().Substring(1, jsdata.ToString().Length - 2).Replace("\\", "");
         ohlc = JsonConvert.DeserializeObject<Ohlc[]>(data);
 

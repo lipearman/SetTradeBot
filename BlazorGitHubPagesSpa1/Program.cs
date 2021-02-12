@@ -25,14 +25,14 @@ namespace BlazorGitHubPagesSpa1
             builder.Services.AddMatToaster(config =>
             {
                 config.Position = MatToastPosition.BottomCenter;
-                config.ShowProgressBar = false;
+                config.ShowProgressBar = true;
                 config.ShowStepDuration = 500;
                 config.HideStepDuration = 500;
                 //config.PreventDuplicates = true;
                 //config.NewestOnTop = true;
                 //config.ShowCloseButton = true;
                 //config.MaximumOpacity = 95;
-                config.VisibleStateDuration = 1500;
+                config.VisibleStateDuration = 2000;
             });
 
             await builder.Build().RunAsync();

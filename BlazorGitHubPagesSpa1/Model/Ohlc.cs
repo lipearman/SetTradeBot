@@ -35,7 +35,7 @@ namespace BlazorGitHubPagesSpa1.Model
         public Decimal? MACDSignal { get; set; }
         public Decimal? SAR { get; set; }
         public string ActionZone { get; set; }
-        public Decimal? MA { get; set; }
+        public string? MA { get; set; }
         public Decimal? PP { get; set; }
         public Decimal? R1 { get; set; }
         public Decimal? S1 { get; set; }
