@@ -10,7 +10,7 @@
 }
 else
 {
-    <MatTable Items="@ohlc" class="mat-elevation-z5" FilterByColumnName="Symbol" UseSortHeaderRow="true">
+    <MatTable Items="@ohlc" class="mat-elevation-z5" PageSize="50" ShowPaging="false"  FilterByColumnName="Symbol" UseSortHeaderRow="true">
         <MatTableHeader>
             <MatSortHeaderRow SortChanged="@SortData">
                 <MatSortHeader SortId="Symbol" Style="white-space: nowrap">Symbol</MatSortHeader>
@@ -222,7 +222,7 @@ else
 
     private string _title = "";
     private string _message = "";
-    private bool _actionOnClick;
+    private bool _actionOnClick = false;
 
 
     public void Show(MatToastType type, string icon = "")
