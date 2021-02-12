@@ -179,7 +179,6 @@ C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\Raz
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\Razor\_Imports.razor.g.cs
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\blazor\unlinked.output
-C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\3piPhunnGMxCwbRD0vrvScHPaiuOdf9RwBrR6v9JEpU=.hash
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\mRd6TL4DYldo1ko9czkjEDcoiPdMPrJxz3dekwV6OOY=.hash
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\-zcPVM75OAY_joGVM8yIC1gO1SFYWP1CFERgQ8PJkfA=.hash
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\IPbQMdJxZXdk8HTlaPyXdQ6Zb82iZLphnM74yO4EURQ=.hash
@@ -232,13 +231,11 @@ C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\int
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\zNP4aHLW-rhi6gW72YV8xGy1rLa_RQZtwvWEpiwBSrs=.hash
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\9jow9vaxoUfLO97UVpFL3dZS6G3luBqhDhij5a2_7HE=.hash
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\dwm_rKImjhxtOmHHVpSxOgl2oh2R26xOWihLaZSv7Vs=.hash
-C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\puXNFRKAyeqAE6Cc9ZNTmLO1UHTvtOr4DzbBaup_JxE=.hash
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\mPoqx7XczFHBWk3gRNn0hc9ekG1OvkKY4XiKRY5Mj5U=.hash
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\3S0qzYaBEKOBXarzVLNzNAFXlwJr6nI3lFlYUpQTPH8=.hash
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\UC-3Rm1NkdNdlIrzYARo_dO-HDlS5mhPxo0IQv7kma8=.hash
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\oU0moF6IIkna1pMoSD6Ze63s6aHfjCtUflz7xDmENPg=.hash
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\blazor\blazor.boot.json
-C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\wYPO2UrVzwA7_UPnTCk03d4GesO2yeEqnYF1dHFt2gg=.hash
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\compressed\_framework\_bin\SetTradeBot.dll.gz
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\compressed\_framework\_bin\Newtonsoft.Json.dll.gz
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\compressed\_framework\_bin\netstandard.dll.gz
@@ -365,3 +362,6 @@ C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\Set
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\SetTradeBot.dll
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\SetTradeBot.pdb
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\SetTradeBot.csprojAssemblyReference.cache
+C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\TET-2F9ibgjBaK33C6xM4xPvP1ZWNCKuqoI2L6bvRMg=.hash
+C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\diTfGk3Su3POkjQS05xGDa1TEtlZley0Jhx7IAEsCYs=.hash
+C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\chBcDGylPUI5_DUWa6u6hAauyVycA5NXjYwtDYiOubI=.hash
