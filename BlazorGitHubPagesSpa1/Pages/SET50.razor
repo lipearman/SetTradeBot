@@ -5,16 +5,7 @@
 <h1>SET50 @lastdate</h1>
 @if (ohlc == null)
 {
-    <MatDialog IsOpen="true" CanBeClosed="false">
-        <MatDialogContent>
-            <h3>
-                <span style="padding: 5px; border: 1px solid white;">
-                    <MatProgressCircle Indeterminate="true" FourColored="true" />
-                    Loading
-                </span>
-            </h3>
-        </MatDialogContent>
-    </MatDialog>
+    <div id="loader"></div>
 }
 else
 {
