@@ -364,3 +364,4 @@ C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\Set
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\SetTradeBot.csproj.CopyComplete
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\SetTradeBot.dll
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\SetTradeBot.pdb
+C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\SetTradeBot.csprojAssemblyReference.cache
