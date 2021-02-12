@@ -53,7 +53,9 @@ namespace SetTradeBot.Model
         public string Fractal_Marget { get; set; }
         public Decimal? SuperTrend { get; set; }
         public string BuySell_Signal { get; set; }
-        public string SuperTrend_Signal { get; set; }
+        public string SuperTrend_Signal { get; set; }     
+
+
 
     }
 }
