@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MatBlazor;
 
 namespace BlazorGitHubPagesSpa1
 {
@@ -18,6 +19,21 @@ namespace BlazorGitHubPagesSpa1
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+            builder.Services.AddMatBlazor();
+
+            builder.Services.AddMatToaster(config =>
+            {
+                config.Position = MatToastPosition.BottomCenter;
+                config.ShowProgressBar = false;
+                config.ShowStepDuration = 500;
+                config.HideStepDuration = 500;
+                //config.PreventDuplicates = true;
+                //config.NewestOnTop = true;
+                //config.ShowCloseButton = true;
+                //config.MaximumOpacity = 95;
+                config.VisibleStateDuration = 1500;
+            });
 
             await builder.Build().RunAsync();
         }
