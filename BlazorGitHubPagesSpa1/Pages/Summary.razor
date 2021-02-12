@@ -22,14 +22,12 @@ else
             <MatSortHeaderRow SortChanged="@SortData">
                 <MatSortHeader SortId="Symbol" Style="white-space: nowrap">Symbol</MatSortHeader>
                 <MatSortHeader SortId="ActionZone" Style="white-space: nowrap">ActionZone</MatSortHeader>
-                <th>More...</th>
             </MatSortHeaderRow>
 
         </MatTableHeader>
         <MatTableRow>
-            <td>@context.Symbol</td>
+            <td><MatButton OnClick="()=>OpenDialog(context)" Raised="true" Style="width:150px">@context.Symbol</MatButton></td>
             <td style="white-space: nowrap">@context.ActionZone</td>
-            <td><MatButton OnClick="()=>OpenDialog(context)" Raised="true">More...</MatButton></td>
         </MatTableRow>
     </MatTable>
 
