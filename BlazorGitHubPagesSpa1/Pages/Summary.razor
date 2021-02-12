@@ -31,73 +31,73 @@ else
     </MatTable>
 
 
-    @*<MatDialog @bind-IsOpen="@dialogIsOpen">
-            <MatDialogTitle>@ItemSelected.Name</MatDialogTitle>
-            <MatDialogContent>
-                <h4 class="mt-3">Market (@ItemSelected.Close.ToString())</h4>
-                <MatChipSet>
-                    <MatChip Label="@($"Open:{ItemSelected.Open.ToString()}")"></MatChip>
-                    <MatChip Label="@($"Low:{ItemSelected.Low.ToString()}")"></MatChip>
-                    <MatChip Label="@($"High:{ItemSelected.High.ToString()}")"></MatChip>
-                    <MatChip Label="@($"Previous:{ItemSelected.AdjClose.ToString()}")"></MatChip>
-                    <MatChip Label="@($"Value:{String.Format("{0:n2}",ItemSelected.Value)}")"></MatChip>
-                    <MatChip Label="@($"Volume:{String.Format("{0:n0}",ItemSelected.Volume)}")"></MatChip>
-                    @if (!String.IsNullOrEmpty(ItemSelected.Change))
-                    {<MatChip Label="@($"Change:{ItemSelected.Change.ToString()}/{String.Format("{0:p2}",ItemSelected.PChange.ToString())}")"></MatChip>}
-                    <MatChip Label="@($"Exit:{ItemSelected.ChandelierExit.ToString()}")"></MatChip>
-                </MatChipSet>
+    <MatDialog @bind-IsOpen="@dialogIsOpen">
+        <MatDialogTitle>@ItemSelected.Name</MatDialogTitle>
+        <MatDialogContent>
+            <h4 class="mt-3">Market (@ItemSelected.Close.ToString())</h4>
+            <MatChipSet>
+                <MatChip Label="@($"Open:{ItemSelected.Open.ToString()}")"></MatChip>
+                <MatChip Label="@($"Low:{ItemSelected.Low.ToString()}")"></MatChip>
+                <MatChip Label="@($"High:{ItemSelected.High.ToString()}")"></MatChip>
+                <MatChip Label="@($"Previous:{ItemSelected.AdjClose.ToString()}")"></MatChip>
+                <MatChip Label="@($"Value:{String.Format("{0:n2}",ItemSelected.Value)}")"></MatChip>
+                <MatChip Label="@($"Volume:{String.Format("{0:n0}",ItemSelected.Volume)}")"></MatChip>
+                @if (!String.IsNullOrEmpty(ItemSelected.Change))
+                {<MatChip Label="@($"Change:{ItemSelected.Change.ToString()}/{String.Format("{0:p2}",ItemSelected.PChange.ToString())}")"></MatChip>}
+                <MatChip Label="@($"Exit:{ItemSelected.ChandelierExit.ToString()}")"></MatChip>
+            </MatChipSet>
 
 
-                <h4 class="mt-3">Signal</h4>
-                <MatChipSet>
-                    @if (!String.IsNullOrEmpty(ItemSelected.BuySell_Signal))
-                    {<MatChip Label="@ItemSelected.BuySell_Signal"></MatChip>}
-                    @if (!String.IsNullOrEmpty(ItemSelected.EMA200_signal))
-                    {<MatChip Label="@ItemSelected.EMA200_signal"></MatChip>}
-                    @if (!String.IsNullOrEmpty(ItemSelected.ActionZone))
-                    {<MatChip Label="@ItemSelected.ActionZone"></MatChip>}
-                    @if (!String.IsNullOrEmpty(ItemSelected.Fractal_Marget))
-                    {<MatChip Label="@ItemSelected.Fractal_Marget"></MatChip>}
-                    @if (!String.IsNullOrEmpty(ItemSelected.MA))
-                    {<MatChip Label="@ItemSelected.MA"></MatChip>}
-                    @if (!String.IsNullOrEmpty(ItemSelected.SuperTrend_Signal))
-                    {<MatChip Label="@ItemSelected.SuperTrend_Signal"></MatChip>}
-                    @if (!String.IsNullOrEmpty(ItemSelected.RSI_Signal))
-                    {<MatChip Label="@ItemSelected.RSI_Signal"></MatChip>}
+            <h4 class="mt-3">Signal</h4>
+            <MatChipSet>
+                @if (!String.IsNullOrEmpty(ItemSelected.BuySell_Signal))
+                {<MatChip Label="@ItemSelected.BuySell_Signal"></MatChip>}
+                @if (!String.IsNullOrEmpty(ItemSelected.EMA200_signal))
+                {<MatChip Label="@ItemSelected.EMA200_signal"></MatChip>}
+                @if (!String.IsNullOrEmpty(ItemSelected.ActionZone))
+                {<MatChip Label="@ItemSelected.ActionZone"></MatChip>}
+                @if (!String.IsNullOrEmpty(ItemSelected.Fractal_Marget))
+                {<MatChip Label="@ItemSelected.Fractal_Marget"></MatChip>}
+                @if (!String.IsNullOrEmpty(ItemSelected.MA))
+                {<MatChip Label="@ItemSelected.MA"></MatChip>}
+                @if (!String.IsNullOrEmpty(ItemSelected.SuperTrend_Signal))
+                {<MatChip Label="@ItemSelected.SuperTrend_Signal"></MatChip>}
+                @if (!String.IsNullOrEmpty(ItemSelected.RSI_Signal))
+                {<MatChip Label="@ItemSelected.RSI_Signal"></MatChip>}
 
-                </MatChipSet>
+            </MatChipSet>
 
-                <h4 class="mt-3">Indicators</h4>
-                <MatChipSet>
-                    <MatChip Label="@($"RSI:{ItemSelected.RSI.ToString()}")"></MatChip>
-                    <MatChip Label="@($"MACD:{ItemSelected.MACDSignal.ToString()}/{ItemSelected.MACDLine.ToString()}")"></MatChip>
-                    <MatChip Label="@($"EMA12:{ItemSelected.EMA12.ToString()}")"></MatChip>
-                    <MatChip Label="@($"EMA26:{ItemSelected.EMA26.ToString()}")"></MatChip>
-                    <MatChip Label="@($"EMA200:{ItemSelected.EMA200.ToString()}")"></MatChip>
-                </MatChipSet>
+            <h4 class="mt-3">Indicators</h4>
+            <MatChipSet>
+                <MatChip Label="@($"RSI:{ItemSelected.RSI.ToString()}")"></MatChip>
+                <MatChip Label="@($"MACD:{ItemSelected.MACDSignal.ToString()}/{ItemSelected.MACDLine.ToString()}")"></MatChip>
+                <MatChip Label="@($"EMA12:{ItemSelected.EMA12.ToString()}")"></MatChip>
+                <MatChip Label="@($"EMA26:{ItemSelected.EMA26.ToString()}")"></MatChip>
+                <MatChip Label="@($"EMA200:{ItemSelected.EMA200.ToString()}")"></MatChip>
+            </MatChipSet>
 
-                <h4 class="mt-3">SR (@ItemSelected.PP)</h4>
-                <MatChipSet>
-                    <MatChip Label="@($"SR1:{ItemSelected.S1.ToString()}/{ItemSelected.R1.ToString()}")" IsCheckable="true" IsSelected="@(ItemSelected.Close >= ItemSelected.S1 && ItemSelected.Close<= ItemSelected.R1)"></MatChip>
-                    <MatChip Label="@($"SR2:{ItemSelected.S2.ToString()}/{ItemSelected.R2.ToString()}")" IsCheckable="true" IsSelected="@(ItemSelected.Close >= ItemSelected.S2 && ItemSelected.Close <= ItemSelected.R2)"></MatChip>
-                    <MatChip Label="@($"SR3:{ItemSelected.S3.ToString()}/{ItemSelected.R3.ToString()}")" IsCheckable="true" IsSelected="@(ItemSelected.Close >= ItemSelected.S3 && ItemSelected.Close <= ItemSelected.R3)"></MatChip>
-                </MatChipSet>
+            <h4 class="mt-3">SR (@ItemSelected.PP)</h4>
+            <MatChipSet>
+                <MatChip Label="@($"SR1:{ItemSelected.S1.ToString()}/{ItemSelected.R1.ToString()}")" IsCheckable="true" IsSelected="@(ItemSelected.Close >= ItemSelected.S1 && ItemSelected.Close<= ItemSelected.R1)"></MatChip>
+                <MatChip Label="@($"SR2:{ItemSelected.S2.ToString()}/{ItemSelected.R2.ToString()}")" IsCheckable="true" IsSelected="@(ItemSelected.Close >= ItemSelected.S2 && ItemSelected.Close <= ItemSelected.R2)"></MatChip>
+                <MatChip Label="@($"SR3:{ItemSelected.S3.ToString()}/{ItemSelected.R3.ToString()}")" IsCheckable="true" IsSelected="@(ItemSelected.Close >= ItemSelected.S3 && ItemSelected.Close <= ItemSelected.R3)"></MatChip>
+            </MatChipSet>
 
-            </MatDialogContent>
-            <MatDialogActions>
-                <span style="padding: 5px; border: 1px solid white;">
-                    <MatFAB Icon="@MatIconNames.Link" Label="Website" OnClick="()=>OpenLink(ItemSelected.Symbol)"></MatFAB>
-                </span>
+        </MatDialogContent>
+        <MatDialogActions>
+            <span style="padding: 5px; border: 1px solid white;">
+                <MatFAB Icon="@MatIconNames.Link" Label="Website" OnClick="()=>OpenLink(ItemSelected.Symbol)"></MatFAB>
+            </span>
 
-                <span style="padding: 5px; border: 1px solid white;">
-                    <MatFAB Icon="@MatIconNames.Favorite" Label="Add to favorites" OnClick="@OkClick"></MatFAB>
-                </span>
+            <span style="padding: 5px; border: 1px solid white;">
+                <MatFAB Icon="@MatIconNames.Favorite" Label="Add to favorites" OnClick="@OkClick"></MatFAB>
+            </span>
 
-                <span style="padding: 5px; border: 1px solid white;">
-                    <MatFAB Icon="@MatIconNames.Close" Label="Close" OnClick="@(e => { dialogIsOpen = false; })"></MatFAB>
-                </span>
-            </MatDialogActions>
-        </MatDialog>*@
+            <span style="padding: 5px; border: 1px solid white;">
+                <MatFAB Icon="@MatIconNames.Close" Label="Close" OnClick="@(e => { dialogIsOpen = false; })"></MatFAB>
+            </span>
+        </MatDialogActions>
+    </MatDialog>
 }
 
 
