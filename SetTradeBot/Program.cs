@@ -35,6 +35,17 @@ namespace SetTradeBot
                 config.VisibleStateDuration = 2000;
             });
 
+
+            //builder.Services.AddCors(options =>
+            //{
+
+            //    options.AddDefaultPolicy(policy =>
+            //         policy.WithOrigins(new[] { "https://script.google.com" })
+            //        .AllowAnyHeader()
+            //        .AllowAnyMethod()
+            //        .AllowCredentials());
+            //});
+
             await builder.Build().RunAsync();
         }
     }

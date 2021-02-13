@@ -10,7 +10,7 @@
 }
 else
 {
-    <MatTable Items="@ohlc" class="mat-elevation-z5" PageSize="50" ShowPaging="false"  FilterByColumnName="Symbol" UseSortHeaderRow="true">
+    <MatTable Items="@ohlc" class="mat-elevation-z5" PageSize="50" ShowPaging="false" FilterByColumnName="Symbol" UseSortHeaderRow="true">
         <MatTableHeader>
             <MatSortHeaderRow SortChanged="@SortData">
                 <MatSortHeader SortId="Symbol" Style="white-space: nowrap">Symbol</MatSortHeader>
@@ -86,6 +86,7 @@ else
 
         </MatDialogContent>
         <MatDialogActions>
+
             <span style="padding: 5px; border: 1px solid white;">
                 <MatFAB Icon="@MatIconNames.Bar_chart" Label="TRADINGVIEW" OnClick="()=>OpenLinkTradingView(ItemSelected.Symbol)"></MatFAB>
             </span>
@@ -94,12 +95,19 @@ else
             </span>
 
             <span style="padding: 5px; border: 1px solid white;">
+                @if (addFavoriteLoading)
+                {
+                    <MatProgressCircle Indeterminate="true" FourColored="true" Size="MatProgressCircleSize.Medium"/>
+
+                }
                 <MatFAB Icon="@MatIconNames.Favorite" Label="Add to favorites" OnClick="@OkClick"></MatFAB>
             </span>
 
             <span style="padding: 5px; border: 1px solid white;">
                 <MatFAB Icon="@MatIconNames.Close" Label="Close" OnClick="@(e => { dialogIsOpen = false; })"></MatFAB>
             </span>
+
+
         </MatDialogActions>
     </MatDialog>
 }
@@ -110,6 +118,7 @@ else
     HttpClient HttpClient;
 
     Ohlc ItemSelected = new Ohlc();
+    bool addFavoriteLoading = false;
     bool dialogIsOpen = false;
     string animal = null;
     string dialogAnimal = null;
@@ -127,6 +136,7 @@ else
         dialogAnimal = null;
         dialogIsOpen = true;
     }
+
     void OpenLinkTradingView(string symbol)
     {
         var url = $"https://th.tradingview.com/chart/?symbol=SET%3A{symbol}";
@@ -140,14 +150,22 @@ else
         NavManager.NavigateTo(url, forceLoad: true);
     }
 
-    void OkClick()
+    async Task OkClick()
     {
+
+        addFavoriteLoading = true;
+
+        HttpClient = new HttpClient();
+        var jsdata = await HttpClient.GetStringAsync($"https://script.google.com/macros/s/AKfycbxe6QG2n8IRTWyv4nFMl3UMeUKp-6_i0wQlDbIVkN2xOC59f5jB-gYz1Q/exec?mode=favorite&id=1&symbol={ItemSelected.Symbol}");
 
         Show(MatToastType.Success);
 
         animal = dialogAnimal;
         dialogIsOpen = false;
+
+        addFavoriteLoading = false;
     }
+    private static HttpClient _httpClient = new HttpClient();
 
     protected override async Task OnInitializedAsync()
     {

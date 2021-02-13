@@ -96,6 +96,13 @@ using MatBlazor;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 14 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\_Imports.razor"
+using System.Text;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/set50")]
     public partial class SET50 : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -105,12 +112,13 @@ using MatBlazor;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 105 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Pages\SET50.razor"
+#line 116 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Pages\SET50.razor"
        
     Ohlc[] ohlc;
     HttpClient HttpClient;
 
     Ohlc ItemSelected = new Ohlc();
+    bool addFavoriteLoading = false;
     bool dialogIsOpen = false;
     string animal = null;
     string dialogAnimal = null;
@@ -129,21 +137,35 @@ using MatBlazor;
         dialogIsOpen = true;
     }
 
-    void OpenLink(string symbol)
+    void OpenLinkTradingView(string symbol)
+    {
+        var url = $"https://th.tradingview.com/chart/?symbol=SET%3A{symbol}";
+
+        NavManager.NavigateTo(url, forceLoad: true);
+    }
+    void OpenLinkSetTrade(string symbol)
     {
         var url = $"https://www.settrade.com/C04_01_stock_quote_p1.jsp?txtSymbol={symbol}";
 
         NavManager.NavigateTo(url, forceLoad: true);
     }
 
-    void OkClick()
+    async Task OkClick()
     {
+
+        addFavoriteLoading = true;
+
+        HttpClient = new HttpClient();
+        var jsdata = await HttpClient.GetStringAsync($"https://script.google.com/macros/s/AKfycbxe6QG2n8IRTWyv4nFMl3UMeUKp-6_i0wQlDbIVkN2xOC59f5jB-gYz1Q/exec?mode=favorite&id=1&symbol={ItemSelected.Symbol}");
 
         Show(MatToastType.Success);
 
         animal = dialogAnimal;
         dialogIsOpen = false;
+
+        addFavoriteLoading = false;
     }
+    private static HttpClient _httpClient = new HttpClient();
 
     protected override async Task OnInitializedAsync()
     {

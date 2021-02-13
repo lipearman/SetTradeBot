@@ -362,6 +362,6 @@ C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\Set
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\SetTradeBot.dll
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\SetTradeBot.pdb
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\SetTradeBot.csprojAssemblyReference.cache
-C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\TET-2F9ibgjBaK33C6xM4xPvP1ZWNCKuqoI2L6bvRMg=.hash
-C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\diTfGk3Su3POkjQS05xGDa1TEtlZley0Jhx7IAEsCYs=.hash
-C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\chBcDGylPUI5_DUWa6u6hAauyVycA5NXjYwtDYiOubI=.hash
+C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\r-nWy-M4014VWSMcsyO0UBIeyzL-dM5Ca6i9gsElKy4=.hash
+C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\CBhPuB5z7ENcPOeMLiv2EPcGZ61csC0T9KpyUnuwlD0=.hash
+C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\wHto7ujgK3aTApjuOGpzF4JZcJNHUJT5_D9GETxhNv8=.hash
