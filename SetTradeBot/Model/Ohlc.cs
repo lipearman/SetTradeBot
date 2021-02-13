@@ -46,7 +46,7 @@ namespace SetTradeBot.Model
         public Decimal? R4 { get; set; }
         public Decimal? S4 { get; set; }
         public Decimal? ZigZag { get; set; }
-        public Decimal? PointType { get; set; }
+        public string PointType { get; set; }
         public Decimal? RetraceHigh { get; set; }
         public Decimal? RetraceLow { get; set; }
         public Decimal? Fractal { get; set; }
