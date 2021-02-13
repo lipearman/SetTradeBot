@@ -14,7 +14,7 @@ else
         <MatTableHeader>
             <MatSortHeaderRow SortChanged="@SortData">
                 <MatSortHeader SortId="Symbol" Style="white-space: nowrap">Symbol</MatSortHeader>
-                <MatSortHeader SortId="Close" Style="white-space: nowrap">Marget</MatSortHeader>
+                <MatSortHeader SortId="Close" Style="white-space: nowrap">Market</MatSortHeader>
                 <MatSortHeader SortId="Volume" Style="white-space: nowrap">Volume</MatSortHeader>
                 <MatSortHeader SortId="Value" Style="white-space: nowrap">Value</MatSortHeader>
                 <MatSortHeader SortId="RSI_Signal" Style="white-space: nowrap">Momentum</MatSortHeader>
@@ -87,7 +87,10 @@ else
         </MatDialogContent>
         <MatDialogActions>
             <span style="padding: 5px; border: 1px solid white;">
-                <MatFAB Icon="@MatIconNames.Link" Label="Website" OnClick="()=>OpenLink(ItemSelected.Symbol)"></MatFAB>
+                <MatFAB Icon="@MatIconNames.Link" Label="TRADINGVIEW" OnClick="()=>OpenLinkTradingView(ItemSelected.Symbol)"></MatFAB>
+            </span>
+            <span style="padding: 5px; border: 1px solid white;">
+                <MatFAB Icon="@MatIconNames.Link" Label="SETTRADE" OnClick="()=>OpenLinkSetTrade(ItemSelected.Symbol)"></MatFAB>
             </span>
 
             <span style="padding: 5px; border: 1px solid white;">
@@ -124,8 +127,13 @@ else
         dialogAnimal = null;
         dialogIsOpen = true;
     }
+    void OpenLinkTradingView(string symbol)
+    {
+        var url = $"https://th.tradingview.com/chart/?symbol=SET%3A{symbol}";
 
-    void OpenLink(string symbol)
+        NavManager.NavigateTo(url, forceLoad: true);
+    }
+    void OpenLinkSetTrade(string symbol)
     {
         var url = $"https://www.settrade.com/C04_01_stock_quote_p1.jsp?txtSymbol={symbol}";
 
