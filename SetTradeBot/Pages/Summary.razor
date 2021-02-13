@@ -23,7 +23,7 @@ else
         <MatTableRow>
             <td><MatButton OnClick="()=>OpenDialog(context)" Raised="true" Style="width:100px">@context.Symbol</MatButton></td>
 
-            <td style="white-space: nowrap">@String.Format("{0:n2}", @context.Close)</td>
+            <td style="white-space: nowrap">@String.Format("{0:n2}", @context.Close) (@context.Change/@context.PChange)</td>
             <td style="white-space: nowrap">@String.Format("{0:n0}", @context.Volume)</td>
             <td style="white-space: nowrap">@String.Format("{0:n2}", @context.Value)</td>
             <td style="white-space: nowrap">@context.RSI_Signal</td>
