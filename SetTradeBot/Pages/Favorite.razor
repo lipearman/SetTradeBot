@@ -1,34 +1,25 @@
-﻿@page "/set50"
+﻿@page "/Favorite"
 @inject IMatToaster Toaster
 @inject NavigationManager NavManager
-
-<h1> SET50 </h1>
-<h4>@lastdate</h4>
-@if (ohlc == null)
+<h1> Favorite </h1>
+@if (Favorites == null)
 {
     <MatProgressCircle Indeterminate="true" FourColored="true" />
     <h3 class="mat-subtitle1">Loading</h3>
 }
 else
 {
-    <MatTable Items="@ohlc" class="mat-elevation-z5" PageSize="50" ShowPaging="false" FilterByColumnName="Symbol" UseSortHeaderRow="true">
+    <MatTable Items="@Favorites" class="mat-elevation-z5" PageSize="50" ShowPaging="false" FilterByColumnName="symbol" UseSortHeaderRow="true">
         <MatTableHeader>
             <MatSortHeaderRow SortChanged="@SortData">
                 <MatSortHeader SortId="Symbol" Style="white-space: nowrap">Symbol</MatSortHeader>
-                <MatSortHeader SortId="Close" Style="white-space: nowrap">Market</MatSortHeader>
-                <MatSortHeader SortId="Volume" Style="white-space: nowrap">Volume</MatSortHeader>
-                <MatSortHeader SortId="Value" Style="white-space: nowrap">Value</MatSortHeader>
-                <MatSortHeader SortId="RSI_Signal" Style="white-space: nowrap">Momentum</MatSortHeader>
+                <th>Notice Me</th>
             </MatSortHeaderRow>
 
         </MatTableHeader>
         <MatTableRow>
-            <td><MatButton OnClick="()=>OpenDialog(context)" Raised="true" Style="width:100px">@context.Symbol</MatButton></td>
-
-            <td style="white-space: nowrap">@String.Format("{0:n2}", @context.Close) (@context.Change/@context.PChange)</td>
-            <td style="white-space: nowrap">@String.Format("{0:n0}", @context.Volume)</td>
-            <td style="white-space: nowrap">@String.Format("{0:n2}", @context.Value)</td>
-            <td style="white-space: nowrap">@context.RSI_Signal</td>
+            <td><MatButton OnClick="()=>OpenDialog(context)" Raised="true" Style="width:100px">@context.symbol</MatButton></td>
+            <td style="white-space: nowrap"><MatSlideToggle TValue="bool" Value="@context.active" ValueChanged="@(e=>Toggle(e,context))"></MatSlideToggle></td>
         </MatTableRow>
     </MatTable>
 
@@ -96,15 +87,6 @@ else
             </span>
 
             <span style="padding: 5px; border: 1px solid white;">
-                @if (addFavoriteLoading)
-                {
-                    <MatProgressCircle Indeterminate="true" FourColored="true" Size="MatProgressCircleSize.Medium" />
-
-                }
-                <MatFAB Icon="@MatIconNames.Favorite" Label="Add to favorites" OnClick="@OkClick"></MatFAB>
-            </span>
-
-            <span style="padding: 5px; border: 1px solid white;">
                 <MatFAB Icon="@MatIconNames.Close" Label="Close" OnClick="@(e => { dialogIsOpen = false; })"></MatFAB>
             </span>
 
@@ -116,29 +98,27 @@ else
 
 @code {
     Ohlc[] ohlc;
+    SetTradeBot.Model.Favorite[] Favorites;
     Ohlc ItemSelected = new Ohlc();
-    bool addFavoriteLoading = false;
     bool dialogIsOpen = false;
     string animal = null;
-    string dialogAnimal = null;
-    string lastdate = null;
-    private string _title = "";
-    private string _message = "";
-    private bool _actionOnClick = false;
 
 
-    void OpenDialog(Ohlc ohlc)
+    void OpenDialog(Model.Favorite Favorite)
     {
-        ItemSelected = new Ohlc();
-
-        ItemSelected = ohlc;
-
-        _title = ItemSelected.Symbol;
-        _message = "Added To Favorite";
-
-        dialogAnimal = null;
-        dialogIsOpen = true;
+        if (ohlc.Count() > 0)
+        {
+            ItemSelected = ohlc.Where(x => x.Symbol == Favorite.symbol).FirstOrDefault();
+            dialogIsOpen = true;
+        }
     }
+
+    async Task Toggle(bool toggled, Model.Favorite Favorite)
+    {
+        Favorite.active = toggled;
+        await SetTradeBot.Services.GoogleAPI.UpdateFavoriteActive(Favorite);
+    }
+
 
     void OpenLinkTradingView(string symbol)
     {
@@ -153,26 +133,12 @@ else
         NavManager.NavigateTo(url, forceLoad: true);
     }
 
-    async Task OkClick()
-    {
-
-        addFavoriteLoading = true;
-
-        await SetTradeBot.Services.GoogleAPI.AddFavorite("1", ItemSelected.Symbol);
-
-        Show(MatToastType.Success);
-
-        animal = dialogAnimal;
-        dialogIsOpen = false;
-
-        addFavoriteLoading = false;
-    }
-    private static HttpClient _httpClient = new HttpClient();
-
     protected override async Task OnInitializedAsync()
     {
-        ohlc = await SetTradeBot.Services.GoogleAPI.GetSET50();
-        lastdate = $"({ohlc[0].Date.ToString("dd/MM/yyyy HH:mm")})";
+        Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite("1");
+
+        ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
+
     }
 
 
@@ -180,84 +146,22 @@ else
     {
         if (!(sort == null || sort.Direction == MatSortDirection.None || string.IsNullOrEmpty(sort.SortId)))
         {
-            //Comparison<Ohlc> comparison = null;
             switch (sort.SortId)
             {
                 case "Symbol":
-                    //comparison = (s1, s2) => string.Compare(s1.Symbol, s2.Symbol, StringComparison.InvariantCultureIgnoreCase);
                     if (sort.Direction == MatSortDirection.Desc)
                     {
-                        ohlc = ohlc.OrderByDescending(x => x.Symbol).ToArray();
+                        Favorites = Favorites.OrderByDescending(x => x.symbol).ToArray();
                     }
                     else
                     {
-                        ohlc = ohlc.OrderBy(x => x.Symbol).ToArray();
+                        Favorites = Favorites.OrderBy(x => x.symbol).ToArray();
                     }
                     break;
-                case "Close":
-                    //comparison = (s1, s2) => string.Compare(s1.ActionZone, s2.ActionZone, StringComparison.InvariantCultureIgnoreCase);
-                    if (sort.Direction == MatSortDirection.Desc)
-                    {
-                        ohlc = ohlc.OrderByDescending(x => x.Close).ToArray();
-                    }
-                    else
-                    {
-                        ohlc = ohlc.OrderBy(x => x.Close).ToArray();
-                    }
-                    break;
-                case "Volume":
-                    //comparison = (s1, s2) => string.Compare(s1.ActionZone, s2.ActionZone, StringComparison.InvariantCultureIgnoreCase);
-                    if (sort.Direction == MatSortDirection.Desc)
-                    {
-                        ohlc = ohlc.OrderByDescending(x => x.Volume).ToArray();
-                    }
-                    else
-                    {
-                        ohlc = ohlc.OrderBy(x => x.Volume).ToArray();
-                    }
-                    break;
-                case "Value":
-                    //comparison = (s1, s2) => string.Compare(s1.ActionZone, s2.ActionZone, StringComparison.InvariantCultureIgnoreCase);
-                    if (sort.Direction == MatSortDirection.Desc)
-                    {
-                        ohlc = ohlc.OrderByDescending(x => x.Value).ToArray();
-                    }
-                    else
-                    {
-                        ohlc = ohlc.OrderBy(x => x.Value).ToArray();
-                    }
-                    break;
-                case "RSI_Signal":
-                    //comparison = (s1, s2) => string.Compare(s1.ActionZone, s2.ActionZone, StringComparison.InvariantCultureIgnoreCase);
-                    if (sort.Direction == MatSortDirection.Desc)
-                    {
-                        ohlc = ohlc.OrderByDescending(x => x.RSI_Signal).ToArray();
-                    }
-                    else
-                    {
-                        ohlc = ohlc.OrderBy(x => x.RSI_Signal).ToArray();
-                    }
-                    break;
+
             }
 
         }
     }
 
-
-
-    public void Show(MatToastType type, string icon = "")
-    {
-        Toaster.Configuration.Position = MatToastPosition.BottomCenter;
-
-        Toaster.Add(_message, type, _title, icon, config =>
-        {
-            if (_actionOnClick)
-            {
-                config.Onclick = toast =>
-                {
-                    return Task.CompletedTask;
-                };
-            }
-        });
-    }
 }

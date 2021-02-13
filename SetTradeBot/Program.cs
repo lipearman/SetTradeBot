@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MatBlazor;
+using Microsoft.AspNetCore.Components.WebAssembly.Http;
 
 namespace SetTradeBot
 {
@@ -18,7 +19,17 @@ namespace SetTradeBot
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            // configure http client
+            builder.Services.AddScoped(x => new HttpClient() { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+            //builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddTransient(sp => new HttpClient(new DefaultBrowserOptionsMessageHandler(new WebAssemblyHttpHandler()) // or new HttpClientHandler() in .NET 5.0
+            {
+                DefaultBrowserRequestMode = BrowserRequestMode.NoCors
+            })
+            {
+                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress),
+            });
 
             builder.Services.AddMatBlazor();
 
@@ -34,17 +45,6 @@ namespace SetTradeBot
                 //config.MaximumOpacity = 95;
                 config.VisibleStateDuration = 2000;
             });
-
-
-            //builder.Services.AddCors(options =>
-            //{
-
-            //    options.AddDefaultPolicy(policy =>
-            //         policy.WithOrigins(new[] { "https://script.google.com" })
-            //        .AllowAnyHeader()
-            //        .AllowAnyMethod()
-            //        .AllowCredentials());
-            //});
 
             await builder.Build().RunAsync();
         }

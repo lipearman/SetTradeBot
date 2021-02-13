@@ -103,6 +103,13 @@ using System.Text;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 15 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\_Imports.razor"
+using System.Text.RegularExpressions;
+
+#line default
+#line hidden
+#nullable disable
     public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -111,7 +118,7 @@ using System.Text;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Shared\NavMenu.razor"
+#line 33 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

@@ -103,6 +103,13 @@ using System.Text;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 15 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\_Imports.razor"
+using System.Text.RegularExpressions;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/summary")]
     public partial class Summary : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -115,14 +122,16 @@ using System.Text;
 #line 120 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Pages\Summary.razor"
        
     Ohlc[] ohlc;
-    HttpClient HttpClient;
-
     Ohlc ItemSelected = new Ohlc();
     bool addFavoriteLoading = false;
     bool dialogIsOpen = false;
     string animal = null;
     string dialogAnimal = null;
     string lastdate = null;
+    private string _title = "";
+    private string _message = "";
+    private bool _actionOnClick = false;
+
 
     void OpenDialog(Ohlc ohlc)
     {
@@ -155,8 +164,7 @@ using System.Text;
 
         addFavoriteLoading = true;
 
-        HttpClient = new HttpClient();
-        var jsdata = await HttpClient.GetStringAsync($"https://script.google.com/macros/s/AKfycbxe6QG2n8IRTWyv4nFMl3UMeUKp-6_i0wQlDbIVkN2xOC59f5jB-gYz1Q/exec?mode=favorite&id=1&symbol={ItemSelected.Symbol}");
+        await SetTradeBot.Services.GoogleAPI.AddFavorite("1", ItemSelected.Symbol);
 
         Show(MatToastType.Success);
 
@@ -169,11 +177,7 @@ using System.Text;
 
     protected override async Task OnInitializedAsync()
     {
-        HttpClient = new HttpClient();
-        var jsdata = await HttpClient.GetStringAsync($"https://script.google.com/macros/s/AKfycbxe6QG2n8IRTWyv4nFMl3UMeUKp-6_i0wQlDbIVkN2xOC59f5jB-gYz1Q/exec?id=1");
-        var data = jsdata;//.ToString().Substring(1, jsdata.ToString().Length - 2).Replace("\\", "");
-        ohlc = JsonConvert.DeserializeObject<Ohlc[]>(data);
-
+        ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
         lastdate = $"({ohlc[0].Date.ToString("dd/MM/yyyy HH:mm")})";
     }
 
@@ -245,10 +249,6 @@ using System.Text;
         }
     }
 
-
-    private string _title = "";
-    private string _message = "";
-    private bool _actionOnClick = false;
 
 
     public void Show(MatToastType type, string icon = "")

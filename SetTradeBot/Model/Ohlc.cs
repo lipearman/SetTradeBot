@@ -5,6 +5,31 @@ using System.Threading.Tasks;
 
 namespace SetTradeBot.Model
 {
+    public class MyFavorite
+    {
+        public int limit { get; set; }
+        public int offset { get; set; }
+        public bool order { get; set; }
+        public int nitems { get; set; }
+        public Favorite[] items { get; set; }
+    }
+    public class Favorite
+    { 
+        public string lineid { get; set; }
+        public string symbol { get; set; }
+        public Boolean active { get; set; }
+        public string createdate { get; set; }
+    }
+
+    public class MySet
+    {
+        public string limit { get; set; }
+        public int offset { get; set; }
+        public bool order { get; set; }
+        public int nitems { get; set; }
+        public Ohlc[] items { get; set; }
+    }
+
     public class Ohlc
     {
 

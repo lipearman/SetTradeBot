@@ -103,6 +103,13 @@ using System.Text;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 15 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\_Imports.razor"
+using System.Text.RegularExpressions;
+
+#line default
+#line hidden
+#nullable disable
     public partial class App : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -112,7 +119,9 @@ using System.Text;
         #pragma warning restore 1998
 #nullable restore
 #line 33 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\App.razor"
-  MatTheme theme = new MatTheme()
+  
+     
+    MatTheme theme = new MatTheme()
     {
         Primary = "#5d2f91",
         Background = "#fafafa",
