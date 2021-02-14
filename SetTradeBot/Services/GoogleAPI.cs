@@ -70,7 +70,7 @@ namespace SetTradeBot.Services
                 var id = jsdata.Substring(start, end - start).Replace("\"", "").Replace(",", "").Replace(":", "").Replace("#", "");//'#":"86bb6f6a30a9","'
 
                 var url = "https://script.google.com/macros/s/AKfycbxe6QG2n8IRTWyv4nFMl3UMeUKp-6_i0wQlDbIVkN2xOC59f5jB-gYz1Q/exec?path=/favorite&method=PUT";
-                var json = "{\"#\" : \"" + id + "\",\"active\" : \"" + Convert.ToInt16(Favorite.active).ToString() + "\",\"lineid\":\"1\",\"symbol\":\"" + Favorite.symbol + "\",\"createdate\":\"" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\"}";
+                var json = "{\"#\" : \"" + id + "\",\"active\" : \"" + Convert.ToInt16(Favorite.active).ToString() + "\",\"lineid\":\""+ Favorite.lineid +  "\",\"symbol\":\"" + Favorite.symbol + "\",\"createdate\":\"" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\"}";
 
                 using (var client = new HttpClient())
                 using (var request = new HttpRequestMessage(HttpMethod.Post, url))
