@@ -155,7 +155,7 @@
         const params = new URLSearchParams(queryString);
         const id = params.get('id');
         if (id != null && id != '') {
-            window.location.assign(window.location + '/' + id);
+            window.location.assign(window.location.href + '/' + id);
         }
     </script>
 
