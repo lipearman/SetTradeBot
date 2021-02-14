@@ -100,11 +100,11 @@ else
 
 
 @code {
-    Ohlc[] ohlc;
-    SetTradeBot.Model.Favorite[] Favorites;
-    Ohlc ItemSelected = new Ohlc();
-    bool dialogIsOpen = false;
-    string animal = null;
+        Ohlc[] ohlc;
+        SetTradeBot.Model.Favorite[] Favorites;
+        Ohlc ItemSelected = new Ohlc();
+        bool dialogIsOpen = false;
+        string animal = null;
 
     protected Profile Profile { get; set; }
     protected LiffContext Context { get; set; }
@@ -116,8 +116,10 @@ else
     protected string LineVersion { get; set; }
     protected Friendship Friendship { get; set; }
 
-    void OpenDialog(Model.Favorite Favorite)
+    async Task OpenDialog(Model.Favorite Favorite)
     {
+        ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
+
         if (ohlc.Count() > 0)
         {
             ItemSelected = ohlc.Where(x => x.Symbol == Favorite.symbol).FirstOrDefault();
@@ -147,50 +149,50 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
 
-        try
+
+        //try
+        //{
+        if (!Liff.Initialized)
         {
-            if (!Liff.Initialized)
+            await Liff.Init(JSRuntime);
+            if (!await Liff.IsLoggedIn())
             {
-                await Liff.Init(JSRuntime);
-                if (!await Liff.IsLoggedIn())
-                {
-                    await Liff.Login();
-                    return;
-                }
-                Liff.Initialized = true;
+                await Liff.Login();
+                return;
             }
-            Profile = await Liff.GetProfile();
-            if (await Liff.IsInClient())
-            {
-                Context = await Liff.GetContext();
-            }
-            var idtoken = await Liff.GetDecodedIDToken();
-            TokenId = idtoken.Sub;
-            OS = await Liff.GetOS();
-            Language = await Liff.GetLanguage();
-            Version = await Liff.GetVersion();
-            LineVersion = await Liff.GetLineVersion();
-            //Friendship = await Liff.GetFriendship();
-            IDToken = await Liff.GetIDToken();
-
-            Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
-
-            StateHasChanged();
-
-
-
-
-
-
-
+            Liff.Initialized = true;
         }
-        catch (Exception e)
+        Profile = await Liff.GetProfile();
+        if (await Liff.IsInClient())
         {
-            //Profile = null;
-            await JSRuntime.InvokeAsync<object>("alert", e.ToString());
+            Context = await Liff.GetContext();
         }
+        var idtoken = await Liff.GetDecodedIDToken();
+        TokenId = idtoken.Sub;
+        OS = await Liff.GetOS();
+        Language = await Liff.GetLanguage();
+        Version = await Liff.GetVersion();
+        LineVersion = await Liff.GetLineVersion();
+        //Friendship = await Liff.GetFriendship();
+        IDToken = await Liff.GetIDToken();
+
+
+        StateHasChanged();
+
+        Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
+
+
+
+
+
+
+        //}
+        //catch (Exception e)
+        //{
+        //    //Profile = null;
+        //    await JSRuntime.InvokeAsync<object>("alert", e.ToString());
+        //}
 
 
     }
@@ -218,4 +220,4 @@ else
         }
     }
 
-    }
+}
