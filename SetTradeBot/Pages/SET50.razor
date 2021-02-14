@@ -208,12 +208,12 @@ else
         LineVersion = await Liff.GetLineVersion();
         //Friendship = await Liff.GetFriendship();
         IDToken = await Liff.GetIDToken();
-
+        StateHasChanged();
 
         ohlc = await SetTradeBot.Services.GoogleAPI.GetSET50();
         lastdate = $"({ohlc[0].Date.ToString("dd/MM/yyyy HH:mm")})";
 
-        StateHasChanged();
+
 
 
     }
