@@ -119,7 +119,7 @@ using System.Text.RegularExpressions;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 120 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Pages\Summary.razor"
+#line 121 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Pages\Summary.razor"
        
     Ohlc[] ohlc;
     Ohlc ItemSelected = new Ohlc();
