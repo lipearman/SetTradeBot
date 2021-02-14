@@ -147,6 +147,8 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
+
         try
         {
             if (!Liff.Initialized)
@@ -173,11 +175,12 @@ else
             //Friendship = await Liff.GetFriendship();
             IDToken = await Liff.GetIDToken();
 
+            Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
 
             StateHasChanged();
 
-            Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
-            ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
+
+
 
 
 
@@ -186,7 +189,7 @@ else
         catch (Exception e)
         {
             //Profile = null;
-            //await JSRuntime.InvokeAsync<object>("alert", e.ToString());
+            await JSRuntime.InvokeAsync<object>("alert", e.ToString());
         }
 
 
