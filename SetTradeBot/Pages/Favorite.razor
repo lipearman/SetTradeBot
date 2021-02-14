@@ -100,11 +100,11 @@ else
 
 
 @code {
-        Ohlc[] ohlc;
-        SetTradeBot.Model.Favorite[] Favorites;
-        Ohlc ItemSelected = new Ohlc();
-        bool dialogIsOpen = false;
-        string animal = null;
+    Ohlc[] ohlc;
+    SetTradeBot.Model.Favorite[] Favorites;
+    Ohlc ItemSelected = new Ohlc();
+    bool dialogIsOpen = false;
+    string animal = null;
 
     protected Profile Profile { get; set; }
     protected LiffContext Context { get; set; }
@@ -118,7 +118,7 @@ else
 
     async Task OpenDialog(Model.Favorite Favorite)
     {
-        ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
+
 
         if (ohlc.Count() > 0)
         {
@@ -167,6 +167,11 @@ else
         if (await Liff.IsInClient())
         {
             Context = await Liff.GetContext();
+
+            Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
+
+            ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
+
         }
         var idtoken = await Liff.GetDecodedIDToken();
         TokenId = idtoken.Sub;
@@ -178,9 +183,11 @@ else
         IDToken = await Liff.GetIDToken();
 
 
-        StateHasChanged();
+        //StateHasChanged();
 
-        Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
+
+
+
 
 
 
