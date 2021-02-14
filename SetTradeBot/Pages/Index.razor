@@ -16,7 +16,7 @@
         <li class="list-group-item">LINE Ver: @LineVersion</li>
         <li class="list-group-item">OS: @OS</li>
         <li class="list-group-item">Language: @Language</li>
-        <li class="list-group-item">TokenId: @TokenId</li>
+        @*<li class="list-group-item">TokenId: @TokenId</li>
         <li class="list-group-item">Type: @Context?.Type</li>
         <li class="list-group-item">ViewType: @Context?.ViewType</li>
         <li class="list-group-item">UserId: @Context?.UserId</li>
@@ -33,7 +33,7 @@
         else if (@Context?.Type == ContextType.Group)
         {
             <li class="list-group-item">GroupId: @Context?.GroupId</li>
-        }
+        }*@
     </ul>
 </div>
 
@@ -49,38 +49,38 @@
 
     protected override async Task OnInitializedAsync()
     {
-        try
+        //try
+        //{
+        if (!Liff.Initialized)
         {
-            if (!Liff.Initialized)
+            await Liff.Init(JSRuntime);
+            if (!await Liff.IsLoggedIn())
             {
-                await Liff.Init(JSRuntime);
-                if (!await Liff.IsLoggedIn())
-                {
-                    await Liff.Login();
-                    return;
-                }
-                Liff.Initialized = true;
+                await Liff.Login();
+                return;
             }
-            Profile = await Liff.GetProfile();
-            if (await Liff.IsInClient())
-            {
-                Context = await Liff.GetContext();
-            }
-            var idtoken = await Liff.GetDecodedIDToken();
-            TokenId = idtoken.Sub;
-            OS = await Liff.GetOS();
-            Language = await Liff.GetLanguage();
-            Version = await Liff.GetVersion();
-            LineVersion = await Liff.GetLineVersion();
-            //Friendship = await Liff.GetFriendship();
-            IDToken = await Liff.GetIDToken();
-            StateHasChanged();
+            Liff.Initialized = true;
         }
-        catch (Exception e)
+        Profile = await Liff.GetProfile();
+        if (await Liff.IsInClient())
         {
-            await JSRuntime.InvokeAsync<object>("alert", e.ToString());
+            Context = await Liff.GetContext();
         }
-    }
+        var idtoken = await Liff.GetDecodedIDToken();
+        TokenId = idtoken.Sub;
+        OS = await Liff.GetOS();
+        Language = await Liff.GetLanguage();
+        Version = await Liff.GetVersion();
+        LineVersion = await Liff.GetLineVersion();
+        //Friendship = await Liff.GetFriendship();
+        IDToken = await Liff.GetIDToken();
+        StateHasChanged();
+        //}
+        //catch (Exception e)
+        //{
+        //    //await JSRuntime.InvokeAsync<object>("alert", e.ToString());
+        //}
+}
 
 
 }
