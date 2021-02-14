@@ -110,6 +110,20 @@ using System.Text.RegularExpressions;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 17 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\_Imports.razor"
+using LineDC.Liff;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 18 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\_Imports.razor"
+using LineDC.Liff.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/Favorite")]
     public partial class Favorite : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -119,7 +133,7 @@ using System.Text.RegularExpressions;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 99 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Pages\Favorite.razor"
+#line 102 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Pages\Favorite.razor"
        
     Ohlc[] ohlc;
     SetTradeBot.Model.Favorite[] Favorites;
@@ -127,6 +141,15 @@ using System.Text.RegularExpressions;
     bool dialogIsOpen = false;
     string animal = null;
 
+    protected Profile Profile { get; set; }
+    protected LiffContext Context { get; set; }
+    protected string TokenId { get; set; }
+    protected string OS { get; set; }
+    protected string Language { get; set; }
+    protected string Version { get; set; }
+    protected string IDToken { get; set; }
+    protected string LineVersion { get; set; }
+    protected Friendship Friendship { get; set; }
 
     void OpenDialog(Model.Favorite Favorite)
     {
@@ -159,9 +182,39 @@ using System.Text.RegularExpressions;
 
     protected override async Task OnInitializedAsync()
     {
-        Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite("1");
 
+        if (!Liff.Initialized)
+        {
+            await Liff.Init(JSRuntime);
+            if (!await Liff.IsLoggedIn())
+            {
+                await Liff.Login();
+                return;
+            }
+            Liff.Initialized = true;
+        }
+        Profile = await Liff.GetProfile();
+        if (await Liff.IsInClient())
+        {
+            Context = await Liff.GetContext();
+        }
+        var idtoken = await Liff.GetDecodedIDToken();
+        TokenId = idtoken.Sub;
+        OS = await Liff.GetOS();
+        Language = await Liff.GetLanguage();
+        Version = await Liff.GetVersion();
+        LineVersion = await Liff.GetLineVersion();
+        //Friendship = await Liff.GetFriendship();
+        IDToken = await Liff.GetIDToken();
+
+        Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Profile.UserId);
         ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
+
+        StateHasChanged();
+
+
+
+
 
     }
 
@@ -192,6 +245,8 @@ using System.Text.RegularExpressions;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JSRuntime { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILiffClient Liff { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMatToaster Toaster { get; set; }
     }

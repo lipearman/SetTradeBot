@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MatBlazor;
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
+using LineDC.Liff;
 
 namespace SetTradeBot
 {
@@ -18,6 +19,9 @@ namespace SetTradeBot
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
+
+
+            var appSettings = builder.Configuration.Get<AppSettings>();
 
             // configure http client
             builder.Services.AddScoped(x => new HttpClient() { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
@@ -45,6 +49,8 @@ namespace SetTradeBot
                 //config.MaximumOpacity = 95;
                 config.VisibleStateDuration = 2000;
             });
+
+            builder.Services.AddSingleton<ILiffClient>(new LiffClient(appSettings.LiffId));
 
             await builder.Build().RunAsync();
         }

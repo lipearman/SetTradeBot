@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "r3VVI9fd1ZP0VsxwyHSLMbf6uFcsE5uFrTnuAfAMZFKTgsbqU9WLy4lTa2uZNOSz3HPQwjjtjnRPya5q7TIoBA==",
+  "dgSpecHash": "xESY08y1MOUL82sor6zzBp3oGKtzTbzvvZxcUObhl3/bWL+lhyhPW/Tvv+Wv/fUUa1xeGNFScu21UZ3rtf3t3Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\SetTradeBot.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\dusit\\.nuget\\packages\\linedc.liff\\1.0.0\\linedc.liff.1.0.0.nupkg.sha512",
     "C:\\Users\\dusit\\.nuget\\packages\\matblazor\\2.8.0\\matblazor.2.8.0.nupkg.sha512",
     "C:\\Users\\dusit\\.nuget\\packages\\microsoft.aspnetcore.authorization\\3.1.10\\microsoft.aspnetcore.authorization.3.1.10.nupkg.sha512",
     "C:\\Users\\dusit\\.nuget\\packages\\microsoft.aspnetcore.components\\3.1.10\\microsoft.aspnetcore.components.3.1.10.nupkg.sha512",

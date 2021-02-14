@@ -48,6 +48,10 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "dependencies": {
+            "LineDC.Liff": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "MatBlazor": {
               "target": "Package",
               "version": "[2.8.0, )"

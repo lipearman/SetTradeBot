@@ -1,7 +1,7 @@
 {
   "FilesToCompress": [
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\6HavBD9u98qhqL_OearWXlvQdUeltsAFsfRvaR1iuPI=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\OTmXnuOMdzSekYYnWllxAQoi4EvzU-7a77wlGMr5eMQ=.hash",
       "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\SetTradeBot.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/SetTradeBot.dll.gz"
     },
@@ -126,6 +126,26 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.DependencyInjection.Abstractions.dll.gz"
     },
     {
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\D1gbYUWxCdwEKvWRcGQoVikKs0zgWMUenGMDEaDRxrc=.hash",
+      "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.Extensions.Configuration.Abstractions.dll",
+      "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.Configuration.Abstractions.dll.gz"
+    },
+    {
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\DMpuPn3obzlarJujzk3yNzcISc75h8mdbxWKEjYbDL4=.hash",
+      "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.Extensions.Primitives.dll",
+      "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.Primitives.dll.gz"
+    },
+    {
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\kL-omZDwqByAi_lPdMeDmr3XjHcn4RVb_LmZ4mut1Yc=.hash",
+      "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\System.Runtime.CompilerServices.Unsafe.dll",
+      "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/System.Runtime.CompilerServices.Unsafe.dll.gz"
+    },
+    {
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\1d98vLxz-49XW6Mx6IB613o5ogbwJ4qLxmqz2D2LPDM=.hash",
+      "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.Extensions.Configuration.Binder.dll",
+      "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.Configuration.Binder.dll.gz"
+    },
+    {
       "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\6q7n5uluNOxeOXWmdgNACFYCHlSFwLGXfvdaSx1fAJk=.hash",
       "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.AspNetCore.Components.Web.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.AspNetCore.Components.Web.dll.gz"
@@ -161,19 +181,19 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.Logging.Abstractions.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\w_DEscEPLXa2QwjGoRMEy1XDOSGPM8O3p9QFXlTiea4=.hash",
-      "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\MatBlazor.dll",
-      "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/MatBlazor.dll.gz"
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\h2AapWWKHFNKXcAQwgQ-7TS-LA4HLtpF07O8PQq2etY=.hash",
+      "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.JSInterop.dll",
+      "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.JSInterop.dll.gz"
+    },
+    {
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\Tqh1Da_iTRQJEZUGAsMNFuZ4hf1PMf13WApRZod_uw4=.hash",
+      "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\System.Text.Encodings.Web.dll",
+      "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/System.Text.Encodings.Web.dll.gz"
     },
     {
       "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\HQeN_ZfHAERO_uW0fP0J9J3WV1hQ3vUIOWbqGSYBPp8=.hash",
       "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\System.Text.Json.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/System.Text.Json.dll.gz"
-    },
-    {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\kL-omZDwqByAi_lPdMeDmr3XjHcn4RVb_LmZ4mut1Yc=.hash",
-      "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\System.Runtime.CompilerServices.Unsafe.dll",
-      "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/System.Runtime.CompilerServices.Unsafe.dll.gz"
     },
     {
       "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\OBWh2or_2mU6elwqPfmL72FBZVKl2WzTJ4L-IrKeXM4=.hash",
@@ -191,14 +211,14 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/System.Numerics.Vectors.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\Tqh1Da_iTRQJEZUGAsMNFuZ4hf1PMf13WApRZod_uw4=.hash",
-      "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\System.Text.Encodings.Web.dll",
-      "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/System.Text.Encodings.Web.dll.gz"
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\e9zDL-djnjYCXdINrCcYnIcAeVq8AFueL8mHmjETGDM=.hash",
+      "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\LineDC.Liff.dll",
+      "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/LineDC.Liff.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\h2AapWWKHFNKXcAQwgQ-7TS-LA4HLtpF07O8PQq2etY=.hash",
-      "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.JSInterop.dll",
-      "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.JSInterop.dll.gz"
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\w_DEscEPLXa2QwjGoRMEy1XDOSGPM8O3p9QFXlTiea4=.hash",
+      "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\MatBlazor.dll",
+      "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/MatBlazor.dll.gz"
     },
     {
       "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\sifIvl02zqfSiv67ZRAsSa_NCvhMgTGrIUNuK8LmCNM=.hash",
@@ -211,19 +231,9 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.DependencyInjection.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\DMpuPn3obzlarJujzk3yNzcISc75h8mdbxWKEjYbDL4=.hash",
-      "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.Extensions.Primitives.dll",
-      "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.Primitives.dll.gz"
-    },
-    {
       "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\iUTfpj7A29tIp2gl2fLM_w1MwyI8XMmUV8gFe_mJBZI=.hash",
       "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.Extensions.Configuration.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.Configuration.dll.gz"
-    },
-    {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\D1gbYUWxCdwEKvWRcGQoVikKs0zgWMUenGMDEaDRxrc=.hash",
-      "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.Extensions.Configuration.Abstractions.dll",
-      "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.Configuration.Abstractions.dll.gz"
     },
     {
       "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\iqCTExKPC76hORseVGmhVc1uwSgrTDloPHWYiyzt36Q=.hash",
@@ -266,7 +276,7 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.JSInterop.WebAssembly.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\fUp0mD8iJIC98Da_wd1d3k9OAk3ck02OLAPGYXWIemQ=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\hIyCk5qeq2IhPRv92tMk4jYjj_uYtlAgEf0Bon7fKMk=.hash",
       "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\SetTradeBot.pdb",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/SetTradeBot.pdb.gz"
     },
@@ -291,7 +301,7 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/blazor.webassembly.js.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\8dfd7TUgsXrXC3Q379jlLxT2X-wrOYtmMrZw8QHk1q8=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\2D_DQufTgJDj9U5XLq162IrG2nCkr9CX7njxCCXvahc=.hash",
       "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\blazor.boot.json",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/blazor.boot.json.gz"
     }

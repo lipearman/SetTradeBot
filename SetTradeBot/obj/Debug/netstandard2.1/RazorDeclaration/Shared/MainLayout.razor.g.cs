@@ -110,6 +110,20 @@ using System.Text.RegularExpressions;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 17 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\_Imports.razor"
+using LineDC.Liff;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 18 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\_Imports.razor"
+using LineDC.Liff.Data;
+
+#line default
+#line hidden
+#nullable disable
     public partial class MainLayout : LayoutComponentBase
     {
         #pragma warning disable 1998

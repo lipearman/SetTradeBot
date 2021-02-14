@@ -1,6 +1,9 @@
 ﻿@page "/summary"
 @inject IMatToaster Toaster
 @inject NavigationManager NavManager
+@inject ILiffClient Liff
+@inject IJSRuntime JSRuntime
+
 <h1>Summary</h1>
 <h4>@lastdate</h4>
 @if (ohlc == null)
@@ -130,6 +133,15 @@ else
     private string _message = "";
     private bool _actionOnClick = false;
 
+    protected Profile Profile { get; set; }
+    protected LiffContext Context { get; set; }
+    protected string TokenId { get; set; }
+    protected string OS { get; set; }
+    protected string Language { get; set; }
+    protected string Version { get; set; }
+    protected string IDToken { get; set; }
+    protected string LineVersion { get; set; }
+    protected Friendship Friendship { get; set; }
 
     void OpenDialog(Ohlc ohlc)
     {
@@ -175,8 +187,37 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+
+        if (!Liff.Initialized)
+        {
+            await Liff.Init(JSRuntime);
+            if (!await Liff.IsLoggedIn())
+            {
+                await Liff.Login();
+                return;
+            }
+            Liff.Initialized = true;
+        }
+        Profile = await Liff.GetProfile();
+        if (await Liff.IsInClient())
+        {
+            Context = await Liff.GetContext();
+        }
+        var idtoken = await Liff.GetDecodedIDToken();
+        TokenId = idtoken.Sub;
+        OS = await Liff.GetOS();
+        Language = await Liff.GetLanguage();
+        Version = await Liff.GetVersion();
+        LineVersion = await Liff.GetLineVersion();
+        //Friendship = await Liff.GetFriendship();
+        IDToken = await Liff.GetIDToken();
+
         ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
         lastdate = $"({ohlc[0].Date.ToString("dd/MM/yyyy HH:mm")})";
+
+        StateHasChanged();
+
+
     }
 
 

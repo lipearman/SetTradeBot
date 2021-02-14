@@ -110,6 +110,20 @@ using System.Text.RegularExpressions;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 17 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\_Imports.razor"
+using LineDC.Liff;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 18 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\_Imports.razor"
+using LineDC.Liff.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/summary")]
     public partial class Summary : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -119,7 +133,7 @@ using System.Text.RegularExpressions;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 121 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Pages\Summary.razor"
+#line 124 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Pages\Summary.razor"
        
     Ohlc[] ohlc;
     Ohlc ItemSelected = new Ohlc();
@@ -132,6 +146,15 @@ using System.Text.RegularExpressions;
     private string _message = "";
     private bool _actionOnClick = false;
 
+    protected Profile Profile { get; set; }
+    protected LiffContext Context { get; set; }
+    protected string TokenId { get; set; }
+    protected string OS { get; set; }
+    protected string Language { get; set; }
+    protected string Version { get; set; }
+    protected string IDToken { get; set; }
+    protected string LineVersion { get; set; }
+    protected Friendship Friendship { get; set; }
 
     void OpenDialog(Ohlc ohlc)
     {
@@ -177,8 +200,37 @@ using System.Text.RegularExpressions;
 
     protected override async Task OnInitializedAsync()
     {
+
+        if (!Liff.Initialized)
+        {
+            await Liff.Init(JSRuntime);
+            if (!await Liff.IsLoggedIn())
+            {
+                await Liff.Login();
+                return;
+            }
+            Liff.Initialized = true;
+        }
+        Profile = await Liff.GetProfile();
+        if (await Liff.IsInClient())
+        {
+            Context = await Liff.GetContext();
+        }
+        var idtoken = await Liff.GetDecodedIDToken();
+        TokenId = idtoken.Sub;
+        OS = await Liff.GetOS();
+        Language = await Liff.GetLanguage();
+        Version = await Liff.GetVersion();
+        LineVersion = await Liff.GetLineVersion();
+        //Friendship = await Liff.GetFriendship();
+        IDToken = await Liff.GetIDToken();
+
         ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
         lastdate = $"({ohlc[0].Date.ToString("dd/MM/yyyy HH:mm")})";
+
+        StateHasChanged();
+
+
     }
 
 
@@ -270,6 +322,8 @@ using System.Text.RegularExpressions;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JSRuntime { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILiffClient Liff { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMatToaster Toaster { get; set; }
     }

@@ -110,6 +110,20 @@ using System.Text.RegularExpressions;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 17 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\_Imports.razor"
+using LineDC.Liff;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 18 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\_Imports.razor"
+using LineDC.Liff.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -118,6 +132,60 @@ using System.Text.RegularExpressions;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 40 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Pages\Index.razor"
+       protected Profile Profile { get; set; }
+    protected LiffContext Context { get; set; }
+    protected string TokenId { get; set; }
+    protected string OS { get; set; }
+    protected string Language { get; set; }
+    protected string Version { get; set; }
+    protected string IDToken { get; set; }
+    protected string LineVersion { get; set; }
+    protected Friendship Friendship { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            if (!Liff.Initialized)
+            {
+                await Liff.Init(JSRuntime);
+                if (!await Liff.IsLoggedIn())
+                {
+                    await Liff.Login();
+                    return;
+                }
+                Liff.Initialized = true;
+            }
+            Profile = await Liff.GetProfile();
+            if (await Liff.IsInClient())
+            {
+                Context = await Liff.GetContext();
+            }
+            var idtoken = await Liff.GetDecodedIDToken();
+            TokenId = idtoken.Sub;
+            OS = await Liff.GetOS();
+            Language = await Liff.GetLanguage();
+            Version = await Liff.GetVersion();
+            LineVersion = await Liff.GetLineVersion();
+            //Friendship = await Liff.GetFriendship();
+            IDToken = await Liff.GetIDToken();
+            StateHasChanged();
+        }
+        catch (Exception e)
+        {
+            await JSRuntime.InvokeAsync<object>("alert", e.ToString());
+        }
+    }
+
+
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JSRuntime { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILiffClient Liff { get; set; }
     }
 }
 #pragma warning restore 1591
