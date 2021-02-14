@@ -49,38 +49,38 @@
 
     protected override async Task OnInitializedAsync()
     {
-        //try
-        //{
-        if (!Liff.Initialized)
+        try
         {
-            await Liff.Init(JSRuntime);
-            if (!await Liff.IsLoggedIn())
+            if (!Liff.Initialized)
             {
-                await Liff.Login();
-                return;
+                await Liff.Init(JSRuntime);
+                if (!await Liff.IsLoggedIn())
+                {
+                    await Liff.Login();
+                    return;
+                }
+                Liff.Initialized = true;
             }
-            Liff.Initialized = true;
+            Profile = await Liff.GetProfile();
+            if (await Liff.IsInClient())
+            {
+                Context = await Liff.GetContext();
+            }
+            var idtoken = await Liff.GetDecodedIDToken();
+            TokenId = idtoken.Sub;
+            OS = await Liff.GetOS();
+            Language = await Liff.GetLanguage();
+            Version = await Liff.GetVersion();
+            LineVersion = await Liff.GetLineVersion();
+            //Friendship = await Liff.GetFriendship();
+            IDToken = await Liff.GetIDToken();
+            StateHasChanged();
         }
-        Profile = await Liff.GetProfile();
-        if (await Liff.IsInClient())
+        catch (Exception e)
         {
-            Context = await Liff.GetContext();
+            //await JSRuntime.InvokeAsync<object>("alert", e.ToString());
         }
-        var idtoken = await Liff.GetDecodedIDToken();
-        TokenId = idtoken.Sub;
-        OS = await Liff.GetOS();
-        Language = await Liff.GetLanguage();
-        Version = await Liff.GetVersion();
-        LineVersion = await Liff.GetLineVersion();
-        //Friendship = await Liff.GetFriendship();
-        IDToken = await Liff.GetIDToken();
-        StateHasChanged();
-        //}
-        //catch (Exception e)
-        //{
-        //    //await JSRuntime.InvokeAsync<object>("alert", e.ToString());
-        //}
-}
+    }
 
 
 }

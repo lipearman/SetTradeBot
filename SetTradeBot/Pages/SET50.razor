@@ -171,7 +171,7 @@ else
 
         addFavoriteLoading = true;
 
-        await SetTradeBot.Services.GoogleAPI.AddFavorite("1", ItemSelected.Symbol);
+        await SetTradeBot.Services.GoogleAPI.AddFavorite(Profile.UserId, ItemSelected.Symbol);
 
         Show(MatToastType.Success);
 
