@@ -1,7 +1,7 @@
 {
   "FilesToCompress": [
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\2LmfHwUtSBnbiOtEBAA-g7_2HavhQSXga85Wg-fB2Ac=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\5uogst4hiRUR1vIZUpAcedW3W8mOtGyLAz5dcBvsAtw=.hash",
       "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\SetTradeBot.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/SetTradeBot.dll.gz"
     },
@@ -276,7 +276,7 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.JSInterop.WebAssembly.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\KMd03xKY_uDI2pcdGaGKw6G2rwXiJ-5MqHrxHaDVZhQ=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\iHVJXZr5PYtmHE2FaCoaS6oqHD8hbbCPAuHf4kOR0V8=.hash",
       "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\SetTradeBot.pdb",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/SetTradeBot.pdb.gz"
     },
@@ -301,7 +301,7 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/blazor.webassembly.js.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\kMZWWrICNteAm_OgFOkD4RT_Z96JI4EsCtDNsR0cG-I=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\ncLK1l-Jy4wYapbuT6e5UiY_TNmyg5UkyBmwz9NAUas=.hash",
       "Source": "C:\\Users\\dusit\\source\\repos\\SetTradeBot\\SetTradeBot\\obj\\Debug\\netstandard2.1\\blazor\\blazor.boot.json",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/blazor.boot.json.gz"
     }

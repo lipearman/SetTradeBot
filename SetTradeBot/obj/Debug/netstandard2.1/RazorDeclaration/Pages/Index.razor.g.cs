@@ -135,50 +135,50 @@ using LineDC.Liff.Data;
 #nullable restore
 #line 44 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Pages\Index.razor"
            protected Profile Profile { get; set; }
-    protected LiffContext Context { get; set; }
-    protected string TokenId { get; set; }
-    protected string OS { get; set; }
-    protected string Language { get; set; }
-    protected string Version { get; set; }
-    protected string IDToken { get; set; }
-    protected string LineVersion { get; set; }
-    protected Friendship Friendship { get; set; }
+        protected LiffContext Context { get; set; }
+        protected string TokenId { get; set; }
+        protected string OS { get; set; }
+        protected string Language { get; set; }
+        protected string Version { get; set; }
+        protected string IDToken { get; set; }
+        protected string LineVersion { get; set; }
+        protected Friendship Friendship { get; set; }
 
-    protected override async Task OnInitializedAsync()
-    {
-        try
+        protected override async Task OnInitializedAsync()
         {
-            if (!Liff.Initialized)
+            try
             {
-                await Liff.Init(JSRuntime);
-                if (!await Liff.IsLoggedIn())
-                {
-                    await Liff.Login();
-                    return;
-                }
-                Liff.Initialized = true;
+                //if (!Liff.Initialized)
+                //{
+                //    await Liff.Init(JSRuntime);
+                //    if (!await Liff.IsLoggedIn())
+                //    {
+                //        await Liff.Login();
+                //        return;
+                //    }
+                //    Liff.Initialized = true;
+                //}
+                //Profile = await Liff.GetProfile();
+                //if (await Liff.IsInClient())
+                //{
+                //    Context = await Liff.GetContext();
+                //}
+                //var idtoken = await Liff.GetDecodedIDToken();
+                //TokenId = idtoken.Sub;
+                //OS = await Liff.GetOS();
+                //Language = await Liff.GetLanguage();
+                //Version = await Liff.GetVersion();
+                //LineVersion = await Liff.GetLineVersion();
+                ////Friendship = await Liff.GetFriendship();
+                //IDToken = await Liff.GetIDToken();
+                //StateHasChanged();
             }
-            Profile = await Liff.GetProfile();
-            if (await Liff.IsInClient())
+            catch (Exception e)
             {
-                Context = await Liff.GetContext();
+                Profile = null;
+                //await JSRuntime.InvokeAsync<object>("alert", e.ToString());
             }
-            var idtoken = await Liff.GetDecodedIDToken();
-            TokenId = idtoken.Sub;
-            OS = await Liff.GetOS();
-            Language = await Liff.GetLanguage();
-            Version = await Liff.GetVersion();
-            LineVersion = await Liff.GetLineVersion();
-            //Friendship = await Liff.GetFriendship();
-            IDToken = await Liff.GetIDToken();
-            StateHasChanged();
         }
-        catch (Exception e)
-        {
-            Profile = null;
-            //await JSRuntime.InvokeAsync<object>("alert", e.ToString());
-        }
-    }
 
 
     

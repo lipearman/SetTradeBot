@@ -183,34 +183,34 @@ using LineDC.Liff.Data;
     protected override async Task OnInitializedAsync()
     {
 
-        if (!Liff.Initialized)
-        {
-            await Liff.Init(JSRuntime);
-            if (!await Liff.IsLoggedIn())
-            {
-                await Liff.Login();
-                return;
-            }
-            Liff.Initialized = true;
-        }
-        Profile = await Liff.GetProfile();
-        if (await Liff.IsInClient())
-        {
-            Context = await Liff.GetContext();
-        }
-        var idtoken = await Liff.GetDecodedIDToken();
-        TokenId = idtoken.Sub;
-        OS = await Liff.GetOS();
-        Language = await Liff.GetLanguage();
-        Version = await Liff.GetVersion();
-        LineVersion = await Liff.GetLineVersion();
-        //Friendship = await Liff.GetFriendship();
-        IDToken = await Liff.GetIDToken();
+        //if (!Liff.Initialized)
+        //{
+        //    await Liff.Init(JSRuntime);
+        //    if (!await Liff.IsLoggedIn())
+        //    {
+        //        await Liff.Login();
+        //        return;
+        //    }
+        //    Liff.Initialized = true;
+        //}
+        //Profile = await Liff.GetProfile();
+        //if (await Liff.IsInClient())
+        //{
+        //    Context = await Liff.GetContext();
+        //}
+        //var idtoken = await Liff.GetDecodedIDToken();
+        //TokenId = idtoken.Sub;
+        //OS = await Liff.GetOS();
+        //Language = await Liff.GetLanguage();
+        //Version = await Liff.GetVersion();
+        //LineVersion = await Liff.GetLineVersion();
+        ////Friendship = await Liff.GetFriendship();
+        //IDToken = await Liff.GetIDToken();
 
-        Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
+        Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite("Ua76f69d4543401209eb93fe422e8ea0a");
         ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
 
-        StateHasChanged();
+        //StateHasChanged();
 
 
 
