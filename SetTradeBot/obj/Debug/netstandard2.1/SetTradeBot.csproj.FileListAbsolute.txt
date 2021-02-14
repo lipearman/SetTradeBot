@@ -369,12 +369,12 @@ C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\bin\Debug\netstandard2.1\www
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\bin\Debug\netstandard2.1\wwwroot\_framework\_bin\Microsoft.Extensions.Configuration.Binder.dll.gz
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\bin\Debug\netstandard2.1\wwwroot\_framework\_bin\LineDC.Liff.dll.gz
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\bin\Debug\netstandard2.1\LineDC.Liff.dll
-C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\OTmXnuOMdzSekYYnWllxAQoi4EvzU-7a77wlGMr5eMQ=.hash
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\1d98vLxz-49XW6Mx6IB613o5ogbwJ4qLxmqz2D2LPDM=.hash
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\e9zDL-djnjYCXdINrCcYnIcAeVq8AFueL8mHmjETGDM=.hash
-C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\hIyCk5qeq2IhPRv92tMk4jYjj_uYtlAgEf0Bon7fKMk=.hash
-C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\2D_DQufTgJDj9U5XLq162IrG2nCkr9CX7njxCCXvahc=.hash
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\compressed\_framework\_bin\Microsoft.Extensions.Configuration.Binder.dll.gz
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\compressed\_framework\_bin\LineDC.Liff.dll.gz
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\compressed\_framework\_bin\Microsoft.Extensions.Configuration.Binder.dll.br
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\compressed\_framework\_bin\LineDC.Liff.dll.br
+C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\2LmfHwUtSBnbiOtEBAA-g7_2HavhQSXga85Wg-fB2Ac=.hash
+C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\KMd03xKY_uDI2pcdGaGKw6G2rwXiJ-5MqHrxHaDVZhQ=.hash
+C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\kMZWWrICNteAm_OgFOkD4RT_Z96JI4EsCtDNsR0cG-I=.hash

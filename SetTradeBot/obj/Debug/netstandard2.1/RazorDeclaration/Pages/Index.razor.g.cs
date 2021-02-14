@@ -133,8 +133,8 @@ using LineDC.Liff.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 40 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Pages\Index.razor"
-       protected Profile Profile { get; set; }
+#line 44 "C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\Pages\Index.razor"
+           protected Profile Profile { get; set; }
     protected LiffContext Context { get; set; }
     protected string TokenId { get; set; }
     protected string OS { get; set; }
@@ -175,11 +175,13 @@ using LineDC.Liff.Data;
         }
         catch (Exception e)
         {
-            await JSRuntime.InvokeAsync<object>("alert", e.ToString());
+            Profile = null;
+            //await JSRuntime.InvokeAsync<object>("alert", e.ToString());
         }
     }
 
 
+    
 
 #line default
 #line hidden

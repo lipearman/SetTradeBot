@@ -207,7 +207,7 @@ using LineDC.Liff.Data;
         //Friendship = await Liff.GetFriendship();
         IDToken = await Liff.GetIDToken();
 
-        Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Profile.UserId);
+        Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
         ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
 
         StateHasChanged();

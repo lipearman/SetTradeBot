@@ -187,7 +187,7 @@ using LineDC.Liff.Data;
 
         addFavoriteLoading = true;
 
-        await SetTradeBot.Services.GoogleAPI.AddFavorite("1", ItemSelected.Symbol);
+        await SetTradeBot.Services.GoogleAPI.AddFavorite(Context.UserId, ItemSelected.Symbol);
 
         Show(MatToastType.Success);
 
@@ -224,12 +224,12 @@ using LineDC.Liff.Data;
         LineVersion = await Liff.GetLineVersion();
         //Friendship = await Liff.GetFriendship();
         IDToken = await Liff.GetIDToken();
-
+        StateHasChanged();
 
         ohlc = await SetTradeBot.Services.GoogleAPI.GetSET50();
         lastdate = $"({ohlc[0].Date.ToString("dd/MM/yyyy HH:mm")})";
 
-        StateHasChanged();
+
 
 
     }
