@@ -375,6 +375,6 @@ C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\com
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\compressed\_framework\_bin\LineDC.Liff.dll.gz
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\compressed\_framework\_bin\Microsoft.Extensions.Configuration.Binder.dll.br
 C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\compressed\_framework\_bin\LineDC.Liff.dll.br
-C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\5uogst4hiRUR1vIZUpAcedW3W8mOtGyLAz5dcBvsAtw=.hash
-C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\iHVJXZr5PYtmHE2FaCoaS6oqHD8hbbCPAuHf4kOR0V8=.hash
-C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\ncLK1l-Jy4wYapbuT6e5UiY_TNmyg5UkyBmwz9NAUas=.hash
+C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\38XM7LyfRo_nvFUftYFMKzniKoNC0dGZ01QagKPsM9U=.hash
+C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\CMGEOIA_v-x3hkMq5BoiB9tw-Do9iLT325eUVCTaFNM=.hash
+C:\Users\dusit\source\repos\SetTradeBot\SetTradeBot\obj\Debug\netstandard2.1\integrity\FCMgB4BLlft8fRYySMVUXeYPI6rrMEooco63Dsm-DWs=.hash

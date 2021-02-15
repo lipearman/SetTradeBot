@@ -200,7 +200,10 @@ using LineDC.Liff.Data;
 
     protected override async Task OnInitializedAsync()
     {
+        Liff = new LiffClient("1655646790-gVqWn4L7");
 
+        //try
+        //{
         if (!Liff.Initialized)
         {
             await Liff.Init(JSRuntime);
@@ -216,20 +219,25 @@ using LineDC.Liff.Data;
         {
             Context = await Liff.GetContext();
         }
-        var idtoken = await Liff.GetDecodedIDToken();
-        TokenId = idtoken.Sub;
-        OS = await Liff.GetOS();
-        Language = await Liff.GetLanguage();
-        Version = await Liff.GetVersion();
-        LineVersion = await Liff.GetLineVersion();
-        //Friendship = await Liff.GetFriendship();
-        IDToken = await Liff.GetIDToken();
-        StateHasChanged();
+        //var idtoken = await Liff.GetDecodedIDToken();
+        //TokenId = idtoken.Sub;
+        //OS = await Liff.GetOS();
+        //Language = await Liff.GetLanguage();
+        //Version = await Liff.GetVersion();
+        //LineVersion = await Liff.GetLineVersion();
+        ////Friendship = await Liff.GetFriendship();
+        //IDToken = await Liff.GetIDToken();
+        ////StateHasChanged();
 
         ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
         lastdate = $"({ohlc[0].Date.ToString("dd/MM/yyyy HH:mm")})";
 
-
+        //}
+        //catch (Exception e)
+        //{
+        //    //Profile = null;
+        //    //await JSRuntime.InvokeAsync<object>("alert", e.ToString());
+        //}
 
 
     }

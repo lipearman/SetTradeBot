@@ -146,38 +146,40 @@ using LineDC.Liff.Data;
 
         protected override async Task OnInitializedAsync()
         {
-            try
+            Liff = new LiffClient("1655646790-gVqWn4L7");
+            //try
+            //{
+            if (!Liff.Initialized)
             {
-                //if (!Liff.Initialized)
-                //{
-                //    await Liff.Init(JSRuntime);
-                //    if (!await Liff.IsLoggedIn())
-                //    {
-                //        await Liff.Login();
-                //        return;
-                //    }
-                //    Liff.Initialized = true;
-                //}
-                //Profile = await Liff.GetProfile();
-                //if (await Liff.IsInClient())
-                //{
-                //    Context = await Liff.GetContext();
-                //}
-                //var idtoken = await Liff.GetDecodedIDToken();
-                //TokenId = idtoken.Sub;
-                //OS = await Liff.GetOS();
-                //Language = await Liff.GetLanguage();
-                //Version = await Liff.GetVersion();
-                //LineVersion = await Liff.GetLineVersion();
-                ////Friendship = await Liff.GetFriendship();
-                //IDToken = await Liff.GetIDToken();
-                //StateHasChanged();
+                await Liff.Init(JSRuntime);
+                if (!await Liff.IsLoggedIn())
+                {
+                    await Liff.Login();
+                    return;
+                }
+                Liff.Initialized = true;
             }
-            catch (Exception e)
+            Profile = await Liff.GetProfile();
+            if (await Liff.IsInClient())
             {
-                Profile = null;
-                //await JSRuntime.InvokeAsync<object>("alert", e.ToString());
+                Context = await Liff.GetContext();
             }
+            var idtoken = await Liff.GetDecodedIDToken();
+            TokenId = idtoken.Sub;
+            OS = await Liff.GetOS();
+            Language = await Liff.GetLanguage();
+            Version = await Liff.GetVersion();
+            LineVersion = await Liff.GetLineVersion();
+            //Friendship = await Liff.GetFriendship();
+            IDToken = await Liff.GetIDToken();
+            StateHasChanged();
+
+            //}
+            //catch (Exception e)
+            //{
+            //    //Profile = null;
+            //    //await JSRuntime.InvokeAsync<object>("alert", e.ToString());
+            //}
         }
 
 

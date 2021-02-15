@@ -151,8 +151,10 @@ using LineDC.Liff.Data;
     protected string LineVersion { get; set; }
     protected Friendship Friendship { get; set; }
 
-    void OpenDialog(Model.Favorite Favorite)
+    async Task OpenDialog(Model.Favorite Favorite)
     {
+
+
         if (ohlc.Count() > 0)
         {
             ItemSelected = ohlc.Where(x => x.Symbol == Favorite.symbol).FirstOrDefault();
@@ -182,22 +184,30 @@ using LineDC.Liff.Data;
 
     protected override async Task OnInitializedAsync()
     {
+        Liff = new LiffClient("1655646790-jmrgwqG4");
 
-        //if (!Liff.Initialized)
+        //try
         //{
-        //    await Liff.Init(JSRuntime);
-        //    if (!await Liff.IsLoggedIn())
-        //    {
-        //        await Liff.Login();
-        //        return;
-        //    }
-        //    Liff.Initialized = true;
-        //}
-        //Profile = await Liff.GetProfile();
-        //if (await Liff.IsInClient())
-        //{
-        //    Context = await Liff.GetContext();
-        //}
+        if (!Liff.Initialized)
+        {
+            await Liff.Init(JSRuntime);
+            if (!await Liff.IsLoggedIn())
+            {
+                await Liff.Login();
+                return;
+            }
+            Liff.Initialized = true;
+        }
+        Profile = await Liff.GetProfile();
+        if (await Liff.IsInClient())
+        {
+            Context = await Liff.GetContext();
+
+            ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
+
+            Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
+
+        }
         //var idtoken = await Liff.GetDecodedIDToken();
         //TokenId = idtoken.Sub;
         //OS = await Liff.GetOS();
@@ -207,13 +217,23 @@ using LineDC.Liff.Data;
         ////Friendship = await Liff.GetFriendship();
         //IDToken = await Liff.GetIDToken();
 
-        Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite("Ua76f69d4543401209eb93fe422e8ea0a");
-        ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
 
         //StateHasChanged();
 
 
 
+
+
+
+
+
+
+        //}
+        //catch (Exception e)
+        //{
+        //    //Profile = null;
+        //    await JSRuntime.InvokeAsync<object>("alert", e.ToString());
+        //}
 
 
     }
