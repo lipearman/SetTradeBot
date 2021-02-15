@@ -168,25 +168,26 @@ else
         {
             Context = await Liff.GetContext();
 
+            ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
+
+            Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
+
         }
-        var idtoken = await Liff.GetDecodedIDToken();
-        TokenId = idtoken.Sub;
-        OS = await Liff.GetOS();
-        Language = await Liff.GetLanguage();
-        Version = await Liff.GetVersion();
-        LineVersion = await Liff.GetLineVersion();
-        //Friendship = await Liff.GetFriendship();
-        IDToken = await Liff.GetIDToken();
+        //var idtoken = await Liff.GetDecodedIDToken();
+        //TokenId = idtoken.Sub;
+        //OS = await Liff.GetOS();
+        //Language = await Liff.GetLanguage();
+        //Version = await Liff.GetVersion();
+        //LineVersion = await Liff.GetLineVersion();
+        ////Friendship = await Liff.GetFriendship();
+        //IDToken = await Liff.GetIDToken();
 
 
         //StateHasChanged();
 
 
 
-        ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
 
-
-        Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
 
 
 
