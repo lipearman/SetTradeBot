@@ -168,9 +168,7 @@ else
         {
             Context = await Liff.GetContext();
 
-            Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
 
-            ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
 
         }
         var idtoken = await Liff.GetDecodedIDToken();
@@ -185,7 +183,9 @@ else
 
         //StateHasChanged();
 
+        Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
 
+        ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
 
 
 
