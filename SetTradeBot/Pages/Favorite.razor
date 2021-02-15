@@ -164,11 +164,11 @@ else
             Liff.Initialized = true;
         }
         //Profile = await Liff.GetProfile();
-        if (await Liff.IsInClient())
-        {
-            Context = await Liff.GetContext();
-            Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
-        }
+        //if (await Liff.IsInClient())
+        //{
+        Context = await Liff.GetContext();
+        Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
+        //}
         //var idtoken = await Liff.GetDecodedIDToken();
         //TokenId = idtoken.Sub;
         //OS = await Liff.GetOS();
