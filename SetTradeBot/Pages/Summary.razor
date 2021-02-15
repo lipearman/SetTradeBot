@@ -122,13 +122,13 @@ else
 
 
 @code {
-        Ohlc[] ohlc;
-        Ohlc ItemSelected = new Ohlc();
-        bool addFavoriteLoading = false;
-        bool dialogIsOpen = false;
-        string animal = null;
-        string dialogAnimal = null;
-        string lastdate = null;
+    Ohlc[] ohlc;
+    Ohlc ItemSelected = new Ohlc();
+    bool addFavoriteLoading = false;
+    bool dialogIsOpen = false;
+    string animal = null;
+    string dialogAnimal = null;
+    string lastdate = null;
     private string _title = "";
     private string _message = "";
     private bool _actionOnClick = false;
@@ -199,20 +199,20 @@ else
             }
             Liff.Initialized = true;
         }
-        Profile = await Liff.GetProfile();
+        //Profile = await Liff.GetProfile();
         if (await Liff.IsInClient())
         {
             Context = await Liff.GetContext();
         }
-        var idtoken = await Liff.GetDecodedIDToken();
-        TokenId = idtoken.Sub;
-        OS = await Liff.GetOS();
-        Language = await Liff.GetLanguage();
-        Version = await Liff.GetVersion();
-        LineVersion = await Liff.GetLineVersion();
-        //Friendship = await Liff.GetFriendship();
-        IDToken = await Liff.GetIDToken();
-        //StateHasChanged();
+        //var idtoken = await Liff.GetDecodedIDToken();
+        //TokenId = idtoken.Sub;
+        //OS = await Liff.GetOS();
+        //Language = await Liff.GetLanguage();
+        //Version = await Liff.GetVersion();
+        //LineVersion = await Liff.GetLineVersion();
+        ////Friendship = await Liff.GetFriendship();
+        //IDToken = await Liff.GetIDToken();
+        ////StateHasChanged();
 
         ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
         lastdate = $"({ohlc[0].Date.ToString("dd/MM/yyyy HH:mm")})";
