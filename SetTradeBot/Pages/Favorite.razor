@@ -5,7 +5,7 @@
 @inject IJSRuntime JSRuntime
 
 <h1> Favorite </h1>
-@if (Favorites == null)
+@if (IsLoading)
 {
     <MatProgressCircle Indeterminate="true" FourColored="true" />
     <h3 class="mat-subtitle1">Loading</h3>
@@ -100,6 +100,7 @@ else
 
 
 @code {
+    bool IsLoading = true;
     Ohlc[] ohlc;
     SetTradeBot.Model.Favorite[] Favorites;
     Ohlc ItemSelected = new Ohlc();
@@ -192,7 +193,7 @@ else
 
 
 
-
+            IsLoading = false;
 
 
         }
