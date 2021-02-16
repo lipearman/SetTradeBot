@@ -1,4 +1,0 @@
-﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="/" Path="C:\Users\dusit\source\repos\SetTradeBot\BitKubBot\bin\Debug\netstandard2.1\wwwroot\" />
-  <ContentRoot BasePath="_content/MatBlazor" Path="C:\Users\dusit\.nuget\packages\matblazor\2.8.0\build\..\staticwebassets\" />
-</StaticWebAssets>

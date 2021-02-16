@@ -156,11 +156,32 @@ using LineDC.Liff.Data;
     protected string LineVersion { get; set; }
     protected Friendship Friendship { get; set; }
 
+    bool IsOpenS1R1 = false;
+    bool IsOpenS2R2 = false;
+    bool IsOpenS3R3 = false;
+
     void OpenDialog(Ohlc ohlc)
     {
         ItemSelected = new Ohlc();
 
         ItemSelected = ohlc;
+
+        IsOpenS1R1 = false;
+        IsOpenS2R2 = false;
+        IsOpenS3R3 = false;
+        if (ItemSelected.Close >= ItemSelected.S1 && ItemSelected.Close <= ItemSelected.R1)
+        {
+            IsOpenS1R1 = true;
+        }
+        else if (ItemSelected.Close >= ItemSelected.S2 && ItemSelected.Close <= ItemSelected.R2)
+        {
+            IsOpenS2R2 = true;
+        }
+        else if (ItemSelected.Close >= ItemSelected.S3 && ItemSelected.Close <= ItemSelected.R3)
+        {
+            IsOpenS3R3 = true;
+        }
+
 
         _title = ItemSelected.Symbol;
         _message = "Added To Favorite";
@@ -200,7 +221,7 @@ using LineDC.Liff.Data;
 
     protected override async Task OnInitializedAsync()
     {
-        
+
 
         //try
         //{
