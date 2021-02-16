@@ -84,9 +84,9 @@ else
 
             <h4 class="mt-3">SR (@ItemSelected.PP)</h4>
             <MatChipSet>
-                <MatChip Label="@($"SR1:{ItemSelected.S1.ToString()}/{ItemSelected.R1.ToString()}")" IsCheckable="true" IsSelected="@(ItemSelected.Close >= ItemSelected.S1 && ItemSelected.Close<= ItemSelected.R1)"></MatChip>
-                <MatChip Label="@($"SR2:{ItemSelected.S2.ToString()}/{ItemSelected.R2.ToString()}")" IsCheckable="true" IsSelected="@(ItemSelected.Close >= ItemSelected.S2 && ItemSelected.Close <= ItemSelected.R2)"></MatChip>
-                <MatChip Label="@($"SR3:{ItemSelected.S3.ToString()}/{ItemSelected.R3.ToString()}")" IsCheckable="true" IsSelected="@(ItemSelected.Close >= ItemSelected.S3 && ItemSelected.Close <= ItemSelected.R3)"></MatChip>
+                <MatChip Label="@($"SR1:{String.Format("{0:n2}",ItemSelected.S1)}/{String.Format("{0:n2}",ItemSelected.R1)}")" IsCheckable="true" IsSelected="@IsOpenS1R1"></MatChip>
+                <MatChip Label="@($"SR2:{String.Format("{0:n2}",ItemSelected.S2)}/{String.Format("{0:n2}",ItemSelected.R2)}")" IsCheckable="true" IsSelected="@IsOpenS2R2"></MatChip>
+                <MatChip Label="@($"SR3:{String.Format("{0:n2}",ItemSelected.S3)}/{String.Format("{0:n2}",ItemSelected.R3)}")" IsCheckable="true" IsSelected="@IsOpenS3R3"></MatChip>
             </MatChipSet>
 
         </MatDialogContent>
@@ -140,11 +140,32 @@ else
     protected string LineVersion { get; set; }
     protected Friendship Friendship { get; set; }
 
+    bool IsOpenS1R1 = false;
+    bool IsOpenS2R2 = false;
+    bool IsOpenS3R3 = false;
+
     void OpenDialog(Ohlc ohlc)
     {
         ItemSelected = new Ohlc();
 
         ItemSelected = ohlc;
+
+        IsOpenS1R1 = false;
+        IsOpenS2R2 = false;
+        IsOpenS3R3 = false;
+        if (ItemSelected.Close >= ItemSelected.S1 && ItemSelected.Close <= ItemSelected.R1)
+        {
+            IsOpenS1R1 = true;
+        }
+        else if (ItemSelected.Close >= ItemSelected.S2 && ItemSelected.Close <= ItemSelected.R2)
+        {
+            IsOpenS2R2 = true;
+        }
+        else if (ItemSelected.Close >= ItemSelected.S3 && ItemSelected.Close <= ItemSelected.R3)
+        {
+            IsOpenS3R3 = true;
+        }
+
 
         _title = ItemSelected.Symbol;
         _message = "Added To Favorite";
@@ -184,7 +205,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
- 
+
         //try
         //{
         if (!Liff.Initialized)
