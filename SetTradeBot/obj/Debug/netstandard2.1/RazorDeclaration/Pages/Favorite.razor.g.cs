@@ -184,8 +184,7 @@ using LineDC.Liff.Data;
 
     protected override async Task OnInitializedAsync()
     {
-        Liff = new LiffClient("1655646790-jmrgwqG4");
-
+       
         //try
         //{
         if (!Liff.Initialized)
@@ -206,7 +205,7 @@ using LineDC.Liff.Data;
             ohlc = await SetTradeBot.Services.GoogleAPI.GetAllSET();
 
             Favorites = await SetTradeBot.Services.GoogleAPI.GetAllFavorite(Context.UserId);
-
+            Favorites = Favorites.OrderBy(x => x.symbol).ToArray();
         }
         //var idtoken = await Liff.GetDecodedIDToken();
         //TokenId = idtoken.Sub;

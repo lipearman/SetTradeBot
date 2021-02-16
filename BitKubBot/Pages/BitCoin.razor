@@ -1,0 +1,296 @@
+﻿@page "/BitCoin"
+@inject IMatToaster Toaster
+@inject NavigationManager NavManager
+@inject ILiffClient Liff
+@inject IJSRuntime JSRuntime
+
+
+
+<h1> BitCoin </h1>
+<h4>@lastdate</h4>
+@if (ohlc == null)
+{
+    <MatProgressCircle Indeterminate="true" FourColored="true" />
+    <h3 class="mat-subtitle1">Loading</h3>
+}
+else
+{
+    <MatTable Items="@ohlc" class="mat-elevation-z5" PageSize="50" ShowPaging="false" FilterByColumnName="Symbol" UseSortHeaderRow="true">
+        <MatTableHeader>
+            <MatSortHeaderRow SortChanged="@SortData">
+                <MatSortHeader SortId="Symbol" Style="white-space: nowrap">Symbol</MatSortHeader>
+                <MatSortHeader SortId="Close" Style="white-space: nowrap">Market</MatSortHeader>
+                <MatSortHeader SortId="Volume" Style="white-space: nowrap">Volume</MatSortHeader>
+                <MatSortHeader SortId="RSI_Signal" Style="white-space: nowrap">Momentum</MatSortHeader>
+            </MatSortHeaderRow>
+
+        </MatTableHeader>
+        <MatTableRow>
+            <td><MatButton OnClick="()=>OpenDialog(context)" Raised="true" Style="width:100px">@context.Symbol</MatButton></td>
+
+            <td style="white-space: nowrap">@String.Format("{0:n2}", @context.Close)</td>
+            <td style="white-space: nowrap">@String.Format("{0:n0}", @context.Volume)</td>
+            <td style="white-space: nowrap">@context.RSI_Signal</td>
+        </MatTableRow>
+    </MatTable>
+
+
+    <MatDialog @bind-IsOpen="@dialogIsOpen">
+        <MatDialogTitle>@ItemSelected.Name</MatDialogTitle>
+        <MatDialogContent>
+            <h4 class="mt-3">Market (@ItemSelected.Close.ToString())</h4>
+            <MatChipSet>
+                <MatChip Label="@($"Open:{ItemSelected.Open.ToString()}")"></MatChip>
+                <MatChip Label="@($"Low:{ItemSelected.Low.ToString()}")"></MatChip>
+                <MatChip Label="@($"High:{ItemSelected.High.ToString()}")"></MatChip>
+                <MatChip Label="@($"Volume:{String.Format("{0:n0}",ItemSelected.Volume)}")"></MatChip>
+                <MatChip Label="@($"Exit:{ItemSelected.ChandelierExit.ToString()}")"></MatChip>
+            </MatChipSet>
+
+
+            <h4 class="mt-3">Signal</h4>
+            <MatChipSet>
+                @if (!String.IsNullOrEmpty(ItemSelected.BuySell_Signal))
+                {<MatChip Label="@ItemSelected.BuySell_Signal"></MatChip>}
+                @if (!String.IsNullOrEmpty(ItemSelected.EMA200_signal))
+                {<MatChip Label="@ItemSelected.EMA200_signal"></MatChip>}
+                @if (!String.IsNullOrEmpty(ItemSelected.ActionZone))
+                {<MatChip Label="@ItemSelected.ActionZone"></MatChip>}
+                @if (!String.IsNullOrEmpty(ItemSelected.Fractal_Marget))
+                {<MatChip Label="@ItemSelected.Fractal_Marget"></MatChip>}
+                @if (!String.IsNullOrEmpty(ItemSelected.MA))
+                {<MatChip Label="@ItemSelected.MA"></MatChip>}
+                @if (!String.IsNullOrEmpty(ItemSelected.SuperTrend_Signal))
+                {<MatChip Label="@ItemSelected.SuperTrend_Signal"></MatChip>}
+                @if (!String.IsNullOrEmpty(ItemSelected.RSI_Signal))
+                {<MatChip Label="@ItemSelected.RSI_Signal"></MatChip>}
+
+            </MatChipSet>
+
+            <h4 class="mt-3">Indicators</h4>
+            <MatChipSet>
+                <MatChip Label="@($"RSI:{ItemSelected.RSI.ToString()}")"></MatChip>
+                <MatChip Label="@($"MACD:{ItemSelected.MACDSignal.ToString()}/{ItemSelected.MACDLine.ToString()}")"></MatChip>
+                <MatChip Label="@($"EMA12:{ItemSelected.EMA12.ToString()}")"></MatChip>
+                <MatChip Label="@($"EMA26:{ItemSelected.EMA26.ToString()}")"></MatChip>
+                <MatChip Label="@($"EMA200:{ItemSelected.EMA200.ToString()}")"></MatChip>
+            </MatChipSet>
+
+            <h4 class="mt-3">SR (@ItemSelected.PP)</h4>
+            <MatChipSet>
+                <MatChip Label="@($"SR1:{ItemSelected.S1.ToString()}/{ItemSelected.R1.ToString()}")" IsCheckable="true" IsSelected="@(ItemSelected.Close >= ItemSelected.S1 && ItemSelected.Close<= ItemSelected.R1)"></MatChip>
+                <MatChip Label="@($"SR2:{ItemSelected.S2.ToString()}/{ItemSelected.R2.ToString()}")" IsCheckable="true" IsSelected="@(ItemSelected.Close >= ItemSelected.S2 && ItemSelected.Close <= ItemSelected.R2)"></MatChip>
+                <MatChip Label="@($"SR3:{ItemSelected.S3.ToString()}/{ItemSelected.R3.ToString()}")" IsCheckable="true" IsSelected="@(ItemSelected.Close >= ItemSelected.S3 && ItemSelected.Close <= ItemSelected.R3)"></MatChip>
+            </MatChipSet>
+
+        </MatDialogContent>
+        <MatDialogActions>
+
+            <span style="padding: 5px; border: 1px solid white;">
+                <MatFAB Icon="@MatIconNames.Bar_chart" Label="TRADINGVIEW" OnClick="()=>OpenLinkTradingView(ItemSelected.Symbol)"></MatFAB>
+            </span>
+            <span style="padding: 5px; border: 1px solid white;">
+                <MatFAB Icon="@MatIconNames.Link" Label="BITKUB" OnClick="()=>OpenLinkBitKub(ItemSelected.Symbol)"></MatFAB>
+            </span>
+
+            <span style="padding: 5px; border: 1px solid white;">
+                @if (addFavoriteLoading)
+                {
+                    <MatProgressCircle Indeterminate="true" FourColored="true" Size="MatProgressCircleSize.Medium" />
+
+                }
+                <MatFAB Icon="@MatIconNames.Favorite" Label="Add to favorites" OnClick="@OkClick"></MatFAB>
+            </span>
+
+            <span style="padding: 5px; border: 1px solid white;">
+                <MatFAB Icon="@MatIconNames.Close" Label="Close" OnClick="@(e => { dialogIsOpen = false; })"></MatFAB>
+            </span>
+
+
+        </MatDialogActions>
+    </MatDialog>
+}
+
+
+@code {
+    Ohlc[] ohlc;
+    Ohlc ItemSelected = new Ohlc();
+    bool addFavoriteLoading = false;
+    bool dialogIsOpen = false;
+    string animal = null;
+    string dialogAnimal = null;
+    string lastdate = null;
+    private string _title = "";
+    private string _message = "";
+    private bool _actionOnClick = false;
+
+    protected Profile Profile { get; set; }
+    protected LiffContext Context { get; set; }
+    protected string TokenId { get; set; }
+    protected string OS { get; set; }
+    protected string Language { get; set; }
+    protected string Version { get; set; }
+    protected string IDToken { get; set; }
+    protected string LineVersion { get; set; }
+    protected Friendship Friendship { get; set; }
+
+    void OpenDialog(Ohlc ohlc)
+    {
+        ItemSelected = new Ohlc();
+
+        ItemSelected = ohlc;
+
+        _title = ItemSelected.Symbol;
+        _message = "Added To Favorite";
+
+        dialogAnimal = null;
+        dialogIsOpen = true;
+    }
+
+    void OpenLinkTradingView(string symbol)
+    {
+        var url = $"https://th.tradingview.com/chart/?symbol=BITKUB%3A{symbol.Replace("_","")}";
+
+        NavManager.NavigateTo(url, forceLoad: true);
+    }
+    void OpenLinkBitKub(string symbol)
+    {
+        var url = $"https://www.bitkub.com/market/{symbol.Replace("_THB", "")}";
+
+        NavManager.NavigateTo(url, forceLoad: true);
+    }
+
+    async Task OkClick()
+    {
+
+        addFavoriteLoading = true;
+
+        await BitKubBot.Services.GoogleAPI.AddFavorite(Context.UserId, ItemSelected.Symbol);
+
+        Show(MatToastType.Success);
+
+        animal = dialogAnimal;
+        dialogIsOpen = false;
+
+        addFavoriteLoading = false;
+    }
+    private static HttpClient _httpClient = new HttpClient();
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        //try
+        //{
+        if (!Liff.Initialized)
+        {
+            await Liff.Init(JSRuntime);
+            if (!await Liff.IsLoggedIn())
+            {
+                await Liff.Login();
+                return;
+            }
+            Liff.Initialized = true;
+        }
+        Profile = await Liff.GetProfile();
+        if (await Liff.IsInClient())
+        {
+            Context = await Liff.GetContext();
+        }
+        //var idtoken = await Liff.GetDecodedIDToken();
+        //TokenId = idtoken.Sub;
+        //OS = await Liff.GetOS();
+        //Language = await Liff.GetLanguage();
+        //Version = await Liff.GetVersion();
+        //LineVersion = await Liff.GetLineVersion();
+        ////Friendship = await Liff.GetFriendship();
+        //IDToken = await Liff.GetIDToken();
+        ////StateHasChanged();
+
+        ohlc = await BitKubBot.Services.GoogleAPI.GetSymbol();
+        lastdate = $"({ohlc[0].Date.ToString("dd/MM/yyyy HH:mm")})";
+
+        //}
+        //catch (Exception e)
+        //{
+        //    //Profile = null;
+        //    //await JSRuntime.InvokeAsync<object>("alert", e.ToString());
+        //}
+
+
+    }
+
+
+    void SortData(MatSortChangedEvent sort)
+    {
+        if (!(sort == null || sort.Direction == MatSortDirection.None || string.IsNullOrEmpty(sort.SortId)))
+        {
+            //Comparison<Ohlc> comparison = null;
+            switch (sort.SortId)
+            {
+                case "Symbol":
+                    //comparison = (s1, s2) => string.Compare(s1.Symbol, s2.Symbol, StringComparison.InvariantCultureIgnoreCase);
+                    if (sort.Direction == MatSortDirection.Desc)
+                    {
+                        ohlc = ohlc.OrderByDescending(x => x.Symbol).ToArray();
+                    }
+                    else
+                    {
+                        ohlc = ohlc.OrderBy(x => x.Symbol).ToArray();
+                    }
+                    break;
+                case "Close":
+                    //comparison = (s1, s2) => string.Compare(s1.ActionZone, s2.ActionZone, StringComparison.InvariantCultureIgnoreCase);
+                    if (sort.Direction == MatSortDirection.Desc)
+                    {
+                        ohlc = ohlc.OrderByDescending(x => x.Close).ToArray();
+                    }
+                    else
+                    {
+                        ohlc = ohlc.OrderBy(x => x.Close).ToArray();
+                    }
+                    break;
+                case "Volume":
+                    //comparison = (s1, s2) => string.Compare(s1.ActionZone, s2.ActionZone, StringComparison.InvariantCultureIgnoreCase);
+                    if (sort.Direction == MatSortDirection.Desc)
+                    {
+                        ohlc = ohlc.OrderByDescending(x => x.Volume).ToArray();
+                    }
+                    else
+                    {
+                        ohlc = ohlc.OrderBy(x => x.Volume).ToArray();
+                    }
+                    break;
+                case "RSI_Signal":
+                    //comparison = (s1, s2) => string.Compare(s1.ActionZone, s2.ActionZone, StringComparison.InvariantCultureIgnoreCase);
+                    if (sort.Direction == MatSortDirection.Desc)
+                    {
+                        ohlc = ohlc.OrderByDescending(x => x.RSI_Signal).ToArray();
+                    }
+                    else
+                    {
+                        ohlc = ohlc.OrderBy(x => x.RSI_Signal).ToArray();
+                    }
+                    break;
+            }
+
+        }
+    }
+
+
+
+    public void Show(MatToastType type, string icon = "")
+    {
+        Toaster.Configuration.Position = MatToastPosition.BottomCenter;
+
+        Toaster.Add(_message, type, _title, icon, config =>
+        {
+            if (_actionOnClick)
+            {
+                config.Onclick = toast =>
+                {
+                    return Task.CompletedTask;
+                };
+            }
+        });
+    }
+}

@@ -200,7 +200,7 @@ using LineDC.Liff.Data;
 
     protected override async Task OnInitializedAsync()
     {
-        Liff = new LiffClient("1655646790-gVqWn4L7");
+        
 
         //try
         //{
